@@ -3,14 +3,16 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Bellota+Text:wght@300;400;700&family=Jost:ital,wght@0,100..900;1,100..900&family=Monoton&display=swap"); */
 
 * {
+  margin: 0;
+  padding: 0;
+  outline: none;
   box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
 }
 
 html {
-  font-family: "Noto Sans JP", sans-serif;
-}
-
-body {
-  margin: 0;
-  background-color: #3f3f3f;
+  font-size: 62.5%;
 }

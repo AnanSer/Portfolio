@@ -1,0 +1,28 @@
+homepage {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.3)
+    ),
+    url(../../images/bg.jpg), center no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+
+.heading {
+  font-size: 6rem;
+  font-weight: 700;
+  color: #fff;
+  background-color: #e41c6f;
+  padding: 0 3rem;
+  margin-bottom: 2rem;
+}
+
+section img {
+  width: 12rem;
+  height: 12rem;
+}
