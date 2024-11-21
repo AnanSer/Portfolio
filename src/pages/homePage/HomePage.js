@@ -9,7 +9,7 @@ const HomePage = () => {
 
       <img className={classes.image} src={images} alt="" />
       <h3 className={classes["person-name"]}>Anan Serbesa</h3>
-      <a href="#" className="btn">
+      <a href="#" className={classes.btn}>
         projects
       </a>
     </section>

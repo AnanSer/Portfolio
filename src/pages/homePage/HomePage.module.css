@@ -51,5 +51,13 @@
   transform: skew(-10deg);
 }
 
-.section-1-btn {
+.btn {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #333;
+  background-color: #fff;
+  border: 0.3rem solid #333;
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
 }
