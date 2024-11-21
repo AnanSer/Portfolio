@@ -8,6 +8,8 @@
     url(../../images/bg.jpg), center no-repeat;
   background-size: cover;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
   text-align: center;
   justify-content: center;
@@ -25,9 +27,16 @@
   border-bottom: 3rem solid #fff;
   text-shadow: 0.2rem 0.2rem 1rem #555;
   transform: skew(10deg);
+  width: 75rem;
 }
 
-section img {
-  width: 12rem;
-  height: 12rem;
+.image {
+  width: 25rem;
+  height: 25rem;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 0.7rem dotted #e41c6f;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 0.5rem;
+  opacity: 0.9;
 }
