@@ -16,18 +16,20 @@
 }
 
 .heading {
-  font-size: 6rem;
+  font-size: 5rem;
   font-weight: 700;
   color: #fff;
   background-color: #e41c6f;
   padding: 0 3rem;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
+  margin-top: 25rem;
+
   text-transform: uppercase;
   letter-spacing: 1rem;
-  border-bottom: 3rem solid #fff;
+  border-bottom: 0.4rem solid #fff;
+  /* border-bottom-width: 0.8rem; */
   text-shadow: 0.2rem 0.2rem 1rem #555;
   transform: skew(10deg);
-  width: 75rem;
 }
 
 .image {
@@ -42,6 +44,7 @@
 }
 
 .person-name {
+  font-weight: 700;
   font-size: 2rem;
   color: #fff;
   background-color: #e41c6f;
