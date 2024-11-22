@@ -14,6 +14,10 @@ const HomePage = () => {
       <h1 className={classes.heading}>web developer</h1>
       <img className={classes.image} src={images} alt="" />
       <h3 className={classes["person-name"]}>Anan Serbesa</h3>
+      <a href="contact.html" className={classes["hire-btn"]}>
+        hire me
+      </a>
+
       <SocialIcon />
     </section>
   );

@@ -1,12 +1,14 @@
 import { Fragment } from "react";
 import HomePage from "../pages/HomePage/HomePage";
-// import NavBar from "./NavBar/NavBar";
+
+import classes from "./Wrapper.module.css";
+import NavBar from "./NavBar/NavBar";
 const Wrapper = () => {
   return (
-    <Fragment>
-      {/* <NavBar /> */}
+    <div className={classes.all}>
+      <NavBar />
       <HomePage />
-    </Fragment>
+    </div>
   );
 };
 
