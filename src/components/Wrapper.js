@@ -1,5 +1,6 @@
 import { Fragment } from "react";
-import HomePage from "../pages/homePage/HomePage";
+import HomePage from "../pages/HomePage/HomePage";
+import navBar from "../pages/NavBar/navBar";
 
 const Wrapper = () => {
   return (
