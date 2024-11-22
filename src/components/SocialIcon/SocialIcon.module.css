@@ -1,0 +1,16 @@
+.social-icons {
+  display: grid;
+  margin-top: 3rem;
+  width: 20rem;
+  grid-template-columns: repeat(5, 1fr);
+  justify-items: center;
+}
+.social-icon {
+  font-size: 3rem;
+  color: white;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+.social-icon:hover {
+  color: #e41c6f;
+}
