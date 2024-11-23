@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
   faLinkedin,
-  faSquarespace,
-  faBehance,
+  faTwitter,
+  faGithub,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
 
@@ -34,12 +34,12 @@ const SocialIcon = () => {
       </li>
       <li>
         <a
-          href="https://www.squarespace.com"
+          href="https://www.twiiter.com"
           className={classes["social-icon"]}
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FontAwesomeIcon icon={faSquarespace} />
+          <FontAwesomeIcon icon={faTwitter} />
         </a>
       </li>
       <li>
@@ -49,7 +49,7 @@ const SocialIcon = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FontAwesomeIcon icon={faBehance} />
+          <FontAwesomeIcon icon={faGithub} />
         </a>
       </li>
       <li>

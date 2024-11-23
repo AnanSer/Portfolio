@@ -22,7 +22,7 @@
   background-color: #e41c6f;
   padding: 0 3rem;
   margin-bottom: 4rem;
-  /* margin-top: 18rem; */
+  margin-top: 8rem;
 
   text-transform: uppercase;
   letter-spacing: 1rem;
@@ -38,7 +38,7 @@
   object-fit: cover;
   border-radius: 50%;
   border: 0.7rem dotted #e41c6f;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgb(255, 255, 255);
   padding: 0.5rem;
   opacity: 0.9;
 }
@@ -53,6 +53,9 @@
   border-radius: 0.7rem;
   letter-spacing: 0.3rem;
   transform: skew(-10deg);
+  /* my */
+  position: relative;
+  left: 2rem;
 }
 
 .btn {
@@ -71,13 +74,16 @@
   font-weight: 700;
   color: #fff;
   background-color: #e41c6f;
-  border: 0.3rem solid #333;
+  border: 0.3rem solid #860c0c;
   padding: 0.5rem 1rem;
   text-transform: uppercase;
   letter-spacing: 0.3rem;
   border-radius: 0.7rem;
   cursor: pointer;
+  transition: all 0.3s;
 }
+
 .hire-btn:hover {
-  background-color: #a10748;
+  background-color: #dd6d9c;
+  color: #80093a;
 }

@@ -8,6 +8,33 @@ const Wrapper = () => {
     <div className={classes.all}>
       <NavBar />
       <HomePage />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <p>heelel</p>
+      <p>heelel</p>
+      <p>heelel</p>
+      <p>heelel</p>
+      <p>heelel</p>
     </div>
   );
 };

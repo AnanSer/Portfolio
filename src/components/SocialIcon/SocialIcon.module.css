@@ -9,12 +9,12 @@
 
 .social-icon {
   font-size: 4rem;
-  color: white;
+  color: rgb(201, 177, 177);
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
   margin: 0 1rem;
 }
 
 .social-icon:hover {
-  color: #e41c6f;
+  color: #e63981;
 }

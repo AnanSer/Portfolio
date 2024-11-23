@@ -10,7 +10,7 @@ const HomePage = () => {
   return (
     <section className={classes.homepage}>
       <br />
-      <NavBar />
+      {/* <NavBar /> */}
       <h1 className={classes.heading}>web developer</h1>
       <img className={classes.image} src={images} alt="" />
       <h3 className={classes["person-name"]}>Anan Serbesa</h3>
