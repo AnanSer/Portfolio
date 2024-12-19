@@ -1,18 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap");
-
-/* @import url("https://fonts.googleapis.com/css2?family=Bellota+Text:wght@300;400;700&family=Jost:ital,wght@0,100..900;1,100..900&family=Monoton&display=swap"); */
-
-* {
+body {
   margin: 0;
-  padding: 0;
-  outline: none;
-  box-sizing: border-box;
-  text-decoration: none;
-  list-style-type: none;
-  font-family: "Jost", sans-serif;
-  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-html {
-  font-size: 62.5%;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }

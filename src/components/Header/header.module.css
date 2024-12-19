@@ -1,0 +1,127 @@
+.navbar {
+  background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+  padding: 1rem 2rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navbar-logo {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar-logo:hover {
+  color: #60a5fa;
+}
+
+.navbar-menu {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-item {
+  margin-left: 1.5rem;
+}
+
+.navbar-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.navbar-link:hover {
+  color: #ffd700;
+}
+
+.navbar-link::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #ffd700;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.navbar-link:hover::after {
+  transform: scaleX(1);
+}
+
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.navbar-toggle-icon {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #ffffff;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-toggle-icon::before,
+.navbar-toggle-icon::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.navbar-toggle-icon::before {
+  top: -8px;
+}
+
+.navbar-toggle-icon::after {
+  bottom: -8px;
+}
+
+@media (max-width: 768px) {
+  .navbar-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+    padding: 1rem 0;
+  }
+
+  .navbar-menu.active {
+    display: flex;
+  }
+
+  .navbar-item {
+    margin: 0.5rem 0;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+}
