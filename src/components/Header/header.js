@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./header.module.css";
+import portfolio from "../../assets/images/portfolio.png";
 
 const Navbar = () => {
   const navItems = ["Home", "About", "Services", "Contact"];
@@ -7,9 +8,7 @@ const Navbar = () => {
   return (
     <nav className={style.navbar}>
       <div className={style["navbar-container"]}>
-        <a href="#" className={style["navbar-logo"]}>
-          Logo
-        </a>
+        <img src={portfolio} alt="Logo" className={style["navbar-logo"]} />
         <ul className={style["navbar-menu"]}>
           {navItems.map((item, index) => (
             <li key={index} className={style["navbar-item"]}>

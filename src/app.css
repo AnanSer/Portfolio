@@ -19,7 +19,7 @@ body {
 .dark {
   --background: #111827;
   --foreground: #ffffff;
-  --primary: #60a5fa;
+  --primary: 60a5fa#;
   --primary-foreground: #111827;
 }
 
@@ -31,3 +31,5 @@ body {
 * {
   box-sizing: border-box;
 }
+
+/* #4b6cb7 */

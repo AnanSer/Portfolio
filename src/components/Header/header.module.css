@@ -17,6 +17,8 @@
 }
 
 .navbar-logo {
+  width: 50px; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
   color: #ffffff;
   font-size: 1.5rem;
   font-weight: bold;
@@ -42,13 +44,13 @@
 .navbar-link {
   color: #ffffff;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 1.4rem;
   transition: color 0.3s ease;
   position: relative;
 }
 
 .navbar-link:hover {
-  color: #ffd700;
+  color: #3b82f6;
 }
 
 .navbar-link::after {
@@ -58,7 +60,7 @@
   height: 2px;
   bottom: -5px;
   left: 0;
-  background-color: #ffd700;
+  background-color: #3b82f6;
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
