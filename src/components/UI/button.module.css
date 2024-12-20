@@ -1,0 +1,155 @@
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-icon {
+  margin-right: 0.5rem;
+}
+
+.btn-primary {
+  background-color: #ffd700;
+  color: #182848;
+}
+
+.btn-primary:hover {
+  background-color: #ffea00;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary {
+  background-color: #4b6cb7;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #3a5a9f;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-tertiary {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+.btn-tertiary:hover {
+  background-color: #ff4757;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-quaternary {
+  background-color: #1e90ff;
+  color: white;
+}
+
+.btn-quaternary:hover {
+  background-color: #007bff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-hire-me {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #4b6cb7;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: absolute;
+  bottom: 5.5rem;
+  left: 12rem;
+  overflow: hidden;
+}
+
+.btn-hire-me:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-hire-me::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0)
+  );
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.btn-hire-me:hover::before {
+  transform: translateX(100%);
+}
+
+.btn-hire-me .btn-icon {
+  margin-right: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.btn-hire-me:hover .btn-icon {
+  transform: rotate(20deg);
+}
+
+@media (max-width: 768px) {
+  .btn-hire-me {
+    position: static;
+    width: 100%;
+    font-size: 1.25rem;
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.btn-hire-me {
+  animation: float 3s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  .button-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}

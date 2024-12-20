@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import style from "./home.module.css";
 import me from "../../assets/images/me.jpg";
+import { HireMeButton } from "../UI/Button";
+import SocialIcons from "../../assets/icons/social-icons";
 
 const HomePage = () => {
   const profileRef = useRef(null);
@@ -66,32 +68,14 @@ const HomePage = () => {
             Web Developer & Designer
           </p>
         </div>
+
+        <div class={style["floating-background"]}></div>
+
+        <SocialIcons />
         <div className={style["profile-picture"]} ref={profileRef}>
           <img src={me} alt="Your Name" />
         </div>
-      </section>
-      <section
-        className={`${style.about} ${scrollY > 300 ? style.visible : ""}`}
-        ref={aboutRef}
-      >
-        <h2>About Me</h2>
-        <p>
-          I'm a passionate web developer with a keen eye for design. I love
-          creating beautiful and functional websites that make a difference.
-        </p>
-      </section>
-      <section
-        className={`${style.skills} ${scrollY > 600 ? style.visible : ""}`}
-        ref={skillsRef}
-      >
-        <h2>My Skills</h2>
-        <ul>
-          <li>HTML5 & CSS3</li>
-          <li>JavaScript (ES6+)</li>
-          <li>React</li>
-          <li>Node.js</li>
-          <li>UI/UX Design</li>
-        </ul>
+        <HireMeButton />
       </section>
     </div>
   );

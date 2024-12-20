@@ -1,0 +1,57 @@
+.social-icons {
+  display: flex;
+  margin-top: 3rem;
+  width: 20rem;
+  position: absolute;
+  bottom: 5.5rem;
+  right: 4rem;
+  list-style: none; /* Remove default list styling */
+  padding: 0;
+  margin: 0;
+  gap: 1rem;
+}
+
+.social-icon {
+  color: #ddd; /* Adjust color as needed */
+  -webkit-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+  font-size: 2rem;
+}
+
+.social-icon:hover {
+  color: #0073b1; /* Adjust hover color as needed */
+  transform: scale(1.2); /* Make the icon bigger on hover */
+  transition: transform 0.3s ease; /* Smooth transition for the scaling effect */
+}
+
+/* Hide the ::marker pseudo-element */
+.social-icons::marker {
+  content: none;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .social-icons {
+    top: 15rem;
+    margin: 0 auto;
+
+    gap: 0.5rem;
+  }
+
+  .social-icon {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-icons {
+    width: 10rem;
+    bottom: 2rem;
+    right: 1rem;
+    gap: 0.25rem;
+  }
+
+  .social-icon {
+    font-size: 1rem;
+  }
+}
