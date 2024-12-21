@@ -3,7 +3,7 @@ import style from "./header.module.css";
 import portfolio from "../../assets/images/portfolio.png";
 
 const Navbar = () => {
-  const navItems = ["Home", "About", "Services", "Contact"];
+  const navItems = ["Home", "About", "Services", "Projects", "Contact"];
 
   return (
     <nav className={style.navbar}>
