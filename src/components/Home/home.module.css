@@ -1,7 +1,8 @@
 .home-page {
   padding-top: 80px;
   margin: 0;
-  height: 100%;
+  height: 100vh;
+  width: 100vw;
   padding: 0;
   margin-bottom: 0; /* Add this line to remove bottom margin */
 }

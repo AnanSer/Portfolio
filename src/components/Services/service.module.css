@@ -1,6 +1,6 @@
 .section {
   padding: 0.1rem 0;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   background: #111827; /* var(--clr-white) */
   /* margin-top: -10rem; */
