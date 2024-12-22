@@ -1,96 +1,69 @@
-import React, { useEffect, useRef, useState } from "react";
-import style from "./service.module.css";
+import React, { useEffect, useRef } from "react";
+import { Code, Palette, Globe } from "lucide-react";
+import styles from "./service.module.css";
+
+const services = [
+  {
+    icon: <Code size={48} />,
+    title: "Web Development",
+    description:
+      " My services encompass everything from initial concept design and user experience optimization to front-end and back-end development. Utilizing the latest technologies and best practices, I ensure that each website is not only visually appealing but also functional and user-friendly across all devices.",
+  },
+  {
+    icon: <Palette size={48} />,
+    title: "UI/UX Design",
+    description:
+      "Professional Profile: A passionate and innovative UI/UX Designer dedicated to transforming complex challenges into elegant, user-centered digital experiences. I create intuitive interfaces that seamlessly blend aesthetics, functionality, and human-centered solutions.",
+  },
+  {
+    icon: <Globe size={48} />,
+    title: "App Development",
+    description:
+      "  I specialize in creating intuitive and engaging mobile applications that enhance user experiences and align with your brand's goals. My design process involves understanding user needs through research and prototyping, ensuring that each app is both functional and visually appealing.",
+  },
+];
 
 const Services = () => {
   const servicesRef = useRef(null);
-  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      setScrollY(scrollPosition);
-
-      if (servicesRef.current) {
-        const opacity = Math.min(1, scrollPosition / 500);
-        servicesRef.current.style.opacity = opacity;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(styles.animate);
+          } else {
+            entry.target.classList.remove(styles.animate);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -100px 0px",
       }
-    };
+    );
 
-    // Add scroll event listener
-    window.addEventListener("scroll", handleScroll);
+    const serviceItems = servicesRef.current.querySelectorAll(
+      `.${styles.serviceItem}`
+    );
+    serviceItems.forEach((item) => observer.observe(item));
 
-    // Cleanup listener on component unmount
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => observer.disconnect();
   }, []);
 
-  const services = [
-    {
-      id: 1,
-      icon: "fas fa-code",
-      title: "Web Development",
-      description: `
-        My services encompass everything from initial concept design and
-        user experience optimization to front-end and back-end development.
-        Utilizing the latest technologies and best practices, I ensure that
-        each website is not only visually appealing but also functional and
-        user-friendly across all devices.
-      `,
-    },
-    {
-      id: 2,
-      icon: "fab fa-sketch",
-      title: "Web Design",
-      description: `
-        I focus on crafting visually stunning and intuitive websites that
-        captivate users and elevate brands. My approach combines aesthetic
-        appeal with functionality, ensuring that each design is both
-        beautiful and user-friendly. From wireframing and prototyping to
-        creating responsive layouts, I prioritize user experience and
-        accessibility in every project.
-      `,
-    },
-    {
-      id: 3,
-      icon: "fab fa-android",
-      title: "App Design",
-      description: `
-        I specialize in creating intuitive and engaging mobile applications
-        that enhance user experiences and align with your brand's goals. My
-        design process involves understanding user needs through research
-        and prototyping, ensuring that each app is both functional and
-        visually appealing.
-      `,
-    },
-  ];
-
   return (
-    <div>
-      <section
-        ref={servicesRef}
-        className={`${style.section} ${style.bgGrey}`}
-        style={{ opacity: Math.min(1, scrollY / 500) }} // Ensure opacity updates dynamically
-      >
-        {/* Section Title */}
-        <div className={style.sectionTitle}>
-          <h2>Services</h2>
-          <div className={style.underline}></div>
-        </div>
-        <br />
-        {/* Services Center */}
-        <div className={`${style.servicesCenter} ${style.sectionCenter}`}>
-          {services.map((service) => (
-            <article key={service.id} className={style.service}>
-              <i className={`${service.icon} ${style.serviceIcon}`}></i>
-              <h4>{service.title}</h4>
-              <div className={style.underline}></div>
-              <p>{service.description}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-    </div>
+    <section className={styles.services} ref={servicesRef}>
+      <h2 className={styles.title}>My Services</h2>
+      <div className={styles.servicesGrid}>
+        {services.map((service, index) => (
+          <div key={index} className={styles.serviceItem}>
+            <div className={styles.serviceIcon}>{service.icon}</div>
+            <h3 className={styles.serviceTitle}>{service.title}</h3>
+            <p className={styles.serviceDescription}>{service.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 };
 
