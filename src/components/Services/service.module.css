@@ -1,0 +1,78 @@
+.section {
+  padding: 0.1rem 0;
+  width: 100%;
+  height: 100vh;
+  background: #111827; /* var(--clr-white) */
+  /* margin-top: -10rem; */
+}
+
+.sectionTitle {
+  text-align: center;
+  margin-top: 2rem;
+  color: #3a86ff;
+  font-size: 2rem;
+}
+
+.underline {
+  width: 5rem;
+  height: 0.25rem;
+  background: #3a86ff;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+
+.servicesCenter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: stretch; /* Ensure all children have the same height */
+  padding-top: 0; /* Add this line to remove top padding */
+}
+
+.service {
+  background: #111827; /* var(--clr-white) */
+  border-radius: 0.25rem; /* var(--radius) */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); /* var(--light-shadow) */
+  padding: 2rem;
+  transition: all 0.3s ease; /* var(--transition) */
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  display: flex;
+  flex-direction: column; /* Ensure content is stacked vertically */
+  justify-content: space-between; /* Distribute space evenly */
+}
+
+.serviceIcon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: #3a86ff; /* var(--clr-primary-5) */
+}
+
+.service:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  transform: scale(1.05);
+  background-color: rgba(75, 108, 183, 0.4);
+}
+
+.service:hover i,
+.service:hover h4,
+.service:hover p {
+  color: #eee;
+}
+
+.service:hover i {
+  transform: scale(1.2);
+
+  transition: all 0.7s ease;
+}
+
+.service h4 {
+  margin-bottom: 1rem;
+  color: #3a86ff;
+}
+
+.service p {
+  color: #6c757d;
+}

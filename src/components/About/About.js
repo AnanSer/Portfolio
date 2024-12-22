@@ -9,13 +9,32 @@ const About = () => {
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
+
+      const scrollPosition = window.scrollY;
+
+      if (aboutRef.current) {
+        aboutRef.current.style.opacity = Math.min(1, scrollPosition / 500);
+        aboutRef.current.style.transform = `translateY(${
+          scrollPosition * 0.1
+        }px)`;
+      }
+
+      if (skillsRef.current) {
+        const skillsPosition = skillsRef.current.offsetTop;
+        const skillsHeight = skillsRef.current.offsetHeight;
+        const windowHeight = window.innerHeight;
+
+        if (scrollPosition > skillsPosition - windowHeight + skillsHeight / 2) {
+          skillsRef.current.classList.add(style.visible);
+        }
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [scrollY]);
 
   return (
     <div className={style["container"]}>
