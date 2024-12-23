@@ -1,20 +1,35 @@
 .contactPage {
   padding: 100px 2rem 2rem;
-  max-width: 600px;
+  /* max-width: 600px; */
   margin: 0 auto;
+  background-color: #111827;
+  max-width: 100vw;
 }
 
 .title {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 2rem;
-  color: #4b6cb7;
+  color: #2980b9; /* Darker shade for better readability */
+  animation: wave 2s infinite;
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .contactForm {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .inputGroup {
@@ -24,16 +39,19 @@
 .input {
   width: 100%;
   padding: 0.75rem;
-  border: 2px solid #ccc;
+  border: 2px solid #bdc3c7; /* Lighter border color */
   border-radius: 4px;
   font-size: 1rem;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #111829;
+  color: #bbb;
 }
 
 .input:focus {
   outline: none;
-  border-color: #4b6cb7;
-  box-shadow: 0 0 0 3px rgba(75, 108, 183, 0.1);
+  border-color: #2980b9; /* Brighter focus color */
+  box-shadow: 0 0 0 3px rgba(41, 128, 185, 0.1);
+  color: #ddd;
 }
 
 .label {
@@ -41,7 +59,7 @@
   left: 0.75rem;
   top: 0.75rem;
   font-size: 1rem;
-  color: #666;
+  color: #7f8c8d; /* Softer label color */
   pointer-events: none;
   transition: all 0.3s ease;
 }
@@ -51,8 +69,8 @@
   top: -0.5rem;
   left: 0.5rem;
   font-size: 0.8rem;
-  color: #4b6cb7;
-  background-color: white;
+  color: #2980b9; /* Brighter label color on focus */
+  background-color: #111827;
   padding: 0 0.25rem;
 }
 
@@ -62,7 +80,7 @@ textarea.input {
 }
 
 .submitButton {
-  background-color: #4b6cb7;
+  background-color: #2980b9; /* Brighter button color */
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -80,7 +98,7 @@ textarea.input {
 }
 
 .submitButton:hover {
-  background-color: #3a5a9f;
+  background-color: #1f618d; /* Darker shade on hover */
   transform: translateY(-2px);
 }
 
@@ -135,7 +153,7 @@ textarea.input {
 }
 
 .input:invalid:not(:placeholder-shown) {
-  border-color: #ff4757;
+  border-color: #e74c3c; /* Brighter invalid color */
   animation: shake 0.3s ease-in-out;
 }
 

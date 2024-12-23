@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Send } from "lucide-react";
 import styles from "./contactForm.module.css";
+import emailjs from "emailjs-com";
 
 const ContactPage = () => {
   const [formState, setFormState] = useState({
@@ -19,10 +20,24 @@ const ContactPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would typically send the form data to a server
-    console.log("Form submitted:", formState);
-    // Reset form after submission
-    setFormState({ name: "", email: "", message: "" });
+    emailjs
+      .sendForm(
+        "service_c4f3c67",
+        "template_wftg2cj",
+        e.target,
+        "s1aoHosd6fDt2Wldn"
+      )
+      .then(
+        (result) => {
+          console.log("Form submitted:", result.text);
+          alert("Message sent successfully!");
+          setFormState({ name: "", email: "", message: "" });
+        },
+        (error) => {
+          console.log("Failed to send message:", error.text);
+          alert("Failed to send message. Please try again later.");
+        }
+      );
   };
 
   return (
