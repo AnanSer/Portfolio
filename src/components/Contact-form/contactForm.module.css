@@ -1,0 +1,150 @@
+.contactPage {
+  padding: 100px 2rem 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #4b6cb7;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.inputGroup {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #4b6cb7;
+  box-shadow: 0 0 0 3px rgba(75, 108, 183, 0.1);
+}
+
+.label {
+  position: absolute;
+  left: 0.75rem;
+  top: 0.75rem;
+  font-size: 1rem;
+  color: #666;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.input:focus ~ .label,
+.input:not(:placeholder-shown) ~ .label {
+  top: -0.5rem;
+  left: 0.5rem;
+  font-size: 0.8rem;
+  color: #4b6cb7;
+  background-color: white;
+  padding: 0 0.25rem;
+}
+
+textarea.input {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.submitButton {
+  background-color: #4b6cb7;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.submitButton:hover {
+  background-color: #3a5a9f;
+  transform: translateY(-2px);
+}
+
+.submitButton:active {
+  transform: translateY(0);
+}
+
+.buttonText {
+  position: relative;
+  z-index: 1;
+}
+
+.sendIcon {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.submitButton:hover .sendIcon {
+  transform: translateX(5px);
+}
+
+.submitButton::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.submitButton:hover::after {
+  width: 300px;
+  height: 300px;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.input:invalid:not(:placeholder-shown) {
+  border-color: #ff4757;
+  animation: shake 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .contactPage {
+    padding-top: 80px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+}
