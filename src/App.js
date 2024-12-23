@@ -4,6 +4,8 @@ import Home from "./Components/Home/home";
 import Services from "./Components/Services/Services";
 import Projects from "./Components/Projects/Projects";
 import ContactPage from "./Components/Contact-form/ContactForm";
+
+import Footer from "./Components/Footer/Footer";
 // import "./Components/Header/header.css";
 // import "./app.css";
 
@@ -16,6 +18,7 @@ function App() {
       <Services />
       <Projects />
       <ContactPage />
+      <Footer />
     </div>
   );
 }

@@ -37,7 +37,7 @@ const About = () => {
   }, [scrollY]);
 
   return (
-    <div className={style["container"]}>
+    <div className={style["container"]} id={"about"}>
       <section
         className={`${style.about} ${scrollY > 300 ? style.visible : ""}`}
         ref={aboutRef}

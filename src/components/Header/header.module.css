@@ -2,7 +2,7 @@
   background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
   padding: 1rem 2rem;
   position: fixed;
-  width: 100vw;
+  width: 100%;
   top: 0;
   left: 0;
   z-index: 1000;
@@ -14,6 +14,7 @@
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .navbar-logo {
@@ -104,6 +105,10 @@
 }
 
 @media (max-width: 768px) {
+  .navbar-container {
+    padding: 0 1rem;
+  }
+
   .navbar-menu {
     display: none;
     flex-direction: column;
@@ -125,5 +130,15 @@
 
   .navbar-toggle {
     display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-logo {
+    font-size: 1.2rem;
+  }
+
+  .navbar-link {
+    font-size: 1.2rem;
   }
 }

@@ -94,7 +94,7 @@ const Projects = () => {
   }, []);
 
   return (
-    <section className={styles.projects} ref={projectsRef}>
+    <section id="projects" className={styles.projects} ref={projectsRef}>
       <h2 className={styles.title}>My Projects</h2>
       <div className={styles.projectsGrid}>
         {projects.map((project, index) => (

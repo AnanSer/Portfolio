@@ -44,6 +44,7 @@ const HomePage = () => {
   return (
     <div className={style["home-page"]}>
       <section
+        id="home"
         className={`${style.hero} ${scrollY > 50 ? style.scrolled : ""}`}
       >
         <div
@@ -69,7 +70,7 @@ const HomePage = () => {
           </p>
         </div>
 
-        <div class={style["floating-background"]}></div>
+        <div className={style["floating-background"]}></div>
 
         <SocialIcons />
         <div className={style["profile-picture"]} ref={profileRef}>

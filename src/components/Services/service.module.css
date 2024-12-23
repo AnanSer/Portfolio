@@ -3,8 +3,9 @@
   margin: 0 auto;
   text-align: center;
   background-color: #111827;
-  width: 100vw;
-  height: 100vh;
+  max-width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
 .title {
@@ -33,7 +34,6 @@
 
 .serviceItem {
   background-color: #111820;
-
   border-radius: 10px;
   padding: 2rem;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -124,8 +124,62 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .services {
+    padding: 1.5rem 0;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
   .servicesGrid {
-    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding-top: 4rem;
+  }
+
+  .serviceItem {
+    width: 250px;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .services {
+    padding: 1rem 0;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .servicesGrid {
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 2rem;
+  }
+
+  .serviceItem {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .services {
+    padding: 0.5rem 0;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .servicesGrid {
+    gap: 0.5rem;
+    padding-top: 1rem;
+  }
+
+  .serviceItem {
+    padding: 0.5rem;
   }
 }

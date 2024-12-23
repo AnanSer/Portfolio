@@ -52,7 +52,7 @@ const Services = () => {
   }, []);
 
   return (
-    <section className={styles.services} ref={servicesRef}>
+    <section className={styles.services} id="services" ref={servicesRef}>
       <h2 className={styles.title}>My Services</h2>
       <div className={styles.servicesGrid}>
         {services.map((service, index) => (

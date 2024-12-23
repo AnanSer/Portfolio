@@ -41,7 +41,7 @@ const ContactPage = () => {
   };
 
   return (
-    <div className={styles.contactPage}>
+    <div id="contact" className={styles.contactPage}>
       <h1 className={styles.title}>Contact Me</h1>
       <form className={styles.contactForm} onSubmit={handleSubmit}>
         <div className={styles.inputGroup}>
