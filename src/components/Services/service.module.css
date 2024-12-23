@@ -19,6 +19,7 @@
 .services:hover .title {
   opacity: 1;
   transform: translateY(0);
+  animation: floatWave 2s ease-in-out infinite;
 }
 
 .servicesGrid {
@@ -59,14 +60,38 @@
   transition: transform 0.3s ease;
 }
 
+@keyframes floatWave {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .serviceItem:hover .serviceIcon {
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 
 .serviceTitle {
   font-size: 1.5rem;
   margin-bottom: 1rem;
   color: #4b6cb7;
+}
+
+.serviceItem:hover .serviceDescription {
+  color: #4b6cb7;
+}
+
+.serviceItem:hover .serviceTitle {
+  color: #ddd;
+}
+
+.serviceItem:hover .serviceIcon {
+  color: #ddd;
 }
 
 .serviceDescription {
