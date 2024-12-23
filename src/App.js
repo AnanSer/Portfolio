@@ -2,7 +2,7 @@ import About from "./Components/About/About";
 import Header from "./Components/Header/header";
 import Home from "./Components/Home/home";
 import Services from "./Components/Services/Services";
-import Buttons from "./Components/UI/Button";
+import Projects from "./Components/Projects/Projects";
 // import "./Components/Header/header.css";
 // import "./app.css";
 
@@ -13,6 +13,7 @@ function App() {
       <Home />
       <About />
       <Services />
+      <Projects />
     </div>
   );
 }

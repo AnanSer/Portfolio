@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { Code, Palette, Globe } from "lucide-react";
+import { Code, Palette, Smartphone } from "lucide-react"; // Fix the import for Smartphone
 import styles from "./service.module.css";
 
 const services = [
@@ -16,7 +16,7 @@ const services = [
       "Professional Profile: A passionate and innovative UI/UX Designer dedicated to transforming complex challenges into elegant, user-centered digital experiences. I create intuitive interfaces that seamlessly blend aesthetics, functionality, and human-centered solutions.",
   },
   {
-    icon: <Globe size={48} />,
+    icon: <Smartphone size={48} />, // Use the correct icon
     title: "App Development",
     description:
       "  I specialize in creating intuitive and engaging mobile applications that enhance user experiences and align with your brand's goals. My design process involves understanding user needs through research and prototyping, ensuring that each app is both functional and visually appealing.",
