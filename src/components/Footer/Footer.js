@@ -1,8 +1,5 @@
-import React from "react";
-// import { GitlabIcon as GitHub, Linkedin, Twitter } from "lucide-react";
+import { Linkedin, Github, Twitter, Facebook, Instagram } from "lucide-react";
 import styles from "./footer.module.css";
-import SocialIcons from "../../assets/icons/social-icons";
-
 const Footer = () => {
   return (
     <footer className={styles.footer}>
@@ -13,7 +10,43 @@ const Footer = () => {
 
         <div className={styles.footerSection}>
           <h3 className={styles.footerTitle}>Connect</h3>
-          <SocialIcons />
+          <div className={styles.socialIcons}>
+            <a
+              href="https://www.linkedin.com/in/anan-ser1177/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Linkedin />
+            </a>
+            <a
+              href="https://github.com/AnanSer"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Github />
+            </a>
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Twitter />
+            </a>
+            <a
+              href="https://www.facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Facebook />
+            </a>
+            <a
+              href="https://www.instagram.com/__anan_242/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Instagram />
+            </a>
+          </div>
         </div>
       </div>
       <div className={styles.footerBottom}>

@@ -58,6 +58,16 @@
   margin-bottom: 0.5rem;
 }
 
+.socialIcons a {
+  margin-right: 0.5rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.socialIcons a:hover {
+  color: #4b6cb7;
+  transform: translateY(-3px);
+}
+
 .footerLink:hover {
   color: #4b6cb7;
 }

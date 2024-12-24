@@ -6,8 +6,6 @@ import Projects from "./Components/Projects/Projects";
 import ContactPage from "./Components/Contact-form/ContactForm";
 
 import Footer from "./Components/Footer/Footer";
-// import "./Components/Header/header.css";
-// import "./app.css";
 
 function App() {
   return (

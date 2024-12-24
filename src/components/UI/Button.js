@@ -3,11 +3,18 @@ import { Mail, Send, Briefcase, Phone } from "lucide-react";
 import styles from "./button.module.css";
 
 export const HireMeButton = () => (
-  <a href="/contact" className={styles["btn-hire-me"]}>
+  <a href="#contact" className={styles["btn-hire-me"]} onClick={smoothScroll}>
     <Phone className={styles["btn-icon"]} />
     HIRE ME
   </a>
 );
+
+const smoothScroll = (e) => {
+  e.preventDefault();
+  document.querySelector(e.currentTarget.getAttribute("href")).scrollIntoView({
+    behavior: "smooth",
+  });
+};
 
 export const ProjectsButton = () => (
   <a href="/projects" className={styles["btn-secondary"]}>

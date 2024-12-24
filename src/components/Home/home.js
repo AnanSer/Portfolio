@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import style from "./home.module.css";
 import me from "../../assets/images/me.jpg";
 import { HireMeButton } from "../UI/Button";
-import SocialIcons from "../../assets/icons/social-icons";
 
 const HomePage = () => {
   const profileRef = useRef(null);
@@ -73,7 +72,7 @@ const HomePage = () => {
         <div className={style["floating-background"]}></div>
 
         <div className={style["profile-picture"]} ref={profileRef}>
-          <img src={me} alt="Your Name" />
+          <img src={me} alt="anan" />
         </div>
         <HireMeButton />
       </section>
