@@ -1,27 +1,28 @@
 import React from "react";
+import { Linkedin, Github, Twitter, Facebook, Instagram } from "lucide-react";
 import styles from "./social-icons.module.css"; // Import the CSS file for styles
 
 const SocialIcons = () => {
   const socialLinks = [
     {
       href: "https://www.linkedin.com/in/anan-ser1177/",
-      className: "fab fa-linkedin",
+      icon: <Linkedin />,
     },
     {
       href: "https://github.com/AnanSer",
-      className: "fab fa-github",
+      icon: <Github />,
     },
     {
       href: "https://x.com/anan_ser1177",
-      className: "fab fa-twitter",
+      icon: <Twitter />,
     },
     {
       href: "https://www.facebook.com",
-      className: "fab fa-facebook",
+      icon: <Facebook />,
     },
     {
       href: "https://www.instagram.com/__anan_242/",
-      className: "fab fa-instagram",
+      icon: <Instagram />,
     },
   ];
 
@@ -34,9 +35,8 @@ const SocialIcons = () => {
             className={styles["social-icon"]}
             target="_blank"
             rel="noopener noreferrer"
-            style={{ textDecoration: "none" }} // Hide the white dot or marker
           >
-            <i className={link.className}></i>
+            {link.icon}
           </a>
         </li>
       ))}

@@ -72,7 +72,6 @@ const HomePage = () => {
 
         <div className={style["floating-background"]}></div>
 
-        <SocialIcons />
         <div className={style["profile-picture"]} ref={profileRef}>
           <img src={me} alt="Your Name" />
         </div>

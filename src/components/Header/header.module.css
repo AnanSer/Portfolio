@@ -22,102 +22,69 @@
   height: auto; /* Maintain aspect ratio */
   color: #ffffff;
   font-size: 1.5rem;
-  font-weight: bold;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.navbar-logo:hover {
-  color: #60a5fa;
 }
 
 .navbar-menu {
   display: flex;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+  list-style: none;
 }
 
 .navbar-item {
-  margin-left: 1.5rem;
+  margin-left: 2rem;
 }
 
 .navbar-link {
   color: #ffffff;
   text-decoration: none;
-  font-size: 1.4rem;
-  transition: color 0.3s ease;
+  font-size: 1rem;
   position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-link::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #ffffff;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
 }
 
 .navbar-link:hover {
-  color: #3b82f6;
+  color: #5d7eca; /* Change color on hover */
+  transform: scale(1.3); /* Slightly enlarge the text */
 }
 
-.navbar-link::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  bottom: -5px;
-  left: 0;
-  background-color: #3b82f6;
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
-
-.navbar-link:hover::after {
-  transform: scaleX(1);
+.navbar-link:hover::before {
+  visibility: visible;
+  width: 100%; /* Expand the underline */
 }
 
 .navbar-toggle {
   display: none;
-  background: none;
-  border: none;
+  flex-direction: column;
   cursor: pointer;
 }
 
 .navbar-toggle-icon {
-  display: block;
   width: 25px;
   height: 3px;
   background-color: #ffffff;
-  position: relative;
-  transition: background-color 0.3s ease;
-}
-
-.navbar-toggle-icon::before,
-.navbar-toggle-icon::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: #ffffff;
-  transition: all 0.3s ease;
-}
-
-.navbar-toggle-icon::before {
-  top: -8px;
-}
-
-.navbar-toggle-icon::after {
-  bottom: -8px;
+  margin: 4px 0;
 }
 
 @media (max-width: 768px) {
-  .navbar-container {
-    padding: 0 1rem;
-  }
-
   .navbar-menu {
     display: none;
     flex-direction: column;
+    width: 100%;
     position: absolute;
     top: 100%;
     left: 0;
-    width: 100%;
-    background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
-    padding: 1rem 0;
+    background-color: #182848;
   }
 
   .navbar-menu.active {
@@ -125,20 +92,11 @@
   }
 
   .navbar-item {
-    margin: 0.5rem 0;
+    margin: 1rem 0;
+    text-align: center;
   }
 
   .navbar-toggle {
-    display: block;
-  }
-}
-
-@media (max-width: 480px) {
-  .navbar-logo {
-    font-size: 1.2rem;
-  }
-
-  .navbar-link {
-    font-size: 1.2rem;
+    display: flex;
   }
 }

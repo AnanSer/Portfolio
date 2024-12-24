@@ -94,3 +94,46 @@
 .skills li:nth-child(5) {
   animation-delay: 0.5s;
 }
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .about,
+  .skills {
+    padding: 3rem 1rem;
+  }
+
+  .about h2,
+  .skills h2 {
+    font-size: 2rem;
+  }
+
+  .about p {
+    font-size: 1rem;
+  }
+
+  .skills li {
+    font-size: 0.875rem;
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about,
+  .skills {
+    padding: 2rem 1rem;
+  }
+
+  .about h2,
+  .skills h2 {
+    font-size: 1.5rem;
+  }
+
+  .about p {
+    font-size: 0.875rem;
+  }
+
+  .skills li {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+  }
+}

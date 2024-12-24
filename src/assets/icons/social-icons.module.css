@@ -1,27 +1,26 @@
 .social-icons {
   display: flex;
-  margin-top: 3rem;
+  /* margin-top: 4rem; */
   width: 20rem;
   position: absolute;
-  bottom: 5.5rem;
-  right: 4rem;
+  bottom: 3.5rem;
+  right: 1.6rem;
   list-style: none; /* Remove default list styling */
   padding: 0;
-  margin: 0;
+  /* margin: 4rem; */
   gap: 1rem;
 }
 
 .social-icon {
   color: #ddd; /* Adjust color as needed */
-  -webkit-transition: color 0.3s ease;
-  transition: color 0.3s ease;
   font-size: 2rem;
+  transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Ensure transition is applied here */
 }
 
 .social-icon:hover {
   color: #0073b1; /* Adjust hover color as needed */
-  transform: scale(1.2); /* Make the icon bigger on hover */
-  transition: transform 0.3s ease; /* Smooth transition for the scaling effect */
+  transform: scale(1.2) rotate(10deg); /* Make the icon bigger and rotate on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
 }
 
 /* Hide the ::marker pseudo-element */
@@ -34,7 +33,6 @@
   .social-icons {
     top: 15rem;
     margin: 0 auto;
-
     gap: 0.5rem;
   }
 
