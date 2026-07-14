@@ -63,7 +63,7 @@ const getEnhancedResponse = (question) => {
       label: 'Visit LinkedIn',
       icon: 'linkedin',
       action: 'open-linkedin',
-      url: 'https://linkedin.com/in/anan' // Update with real URL
+      url: 'https://linkedin.com/in/anan-serbesa'
     });
   }
 
@@ -256,7 +256,12 @@ const AIAssistant = () => {
   const handleAction = (button) => {
     if (button.action === 'download-resume') {
       // Trigger resume download
-      window.open('/resume.pdf', '_blank');
+      const link = document.createElement('a');
+      link.href = require('../../assets/images/Anan_Serbesa_CV.pdf');
+      link.download = 'Anan_Serbesa_CV.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     } else if (button.action === 'open-github') {
       window.open(button.url, '_blank');
     } else if (button.action === 'open-linkedin') {

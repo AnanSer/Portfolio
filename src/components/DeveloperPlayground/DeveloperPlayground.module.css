@@ -1,0 +1,1463 @@
+/* ============================================
+   DEVELOPER PLAYGROUND - COMPACT PREMIUM
+   Refined 55/45 layout with VS Code styling
+   ============================================ */
+
+.playgroundSection {
+  width: 100%;
+  padding: clamp(3rem, 6vw, 4rem) clamp(1rem, 5vw, 4rem);
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   COMPACT HEADER
+   ============================================ */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-lg);
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.headerLeft svg {
+  color: var(--color-primary);
+}
+
+.title {
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: clamp(0.8125rem, 1.25vw, 0.9375rem);
+  color: var(--text-tertiary);
+  font-weight: 500;
+}
+
+/* ============================================
+   COMPACT PLAYGROUND WINDOW
+   ============================================ */
+
+.playground {
+  background: linear-gradient(
+    135deg,
+    var(--glass-bg) 0%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.08),
+    0 12px 40px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  height: 540px;
+  animation: playgroundFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes playgroundFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   VS CODE STYLE WINDOW CONTROLS
+   ============================================ */
+
+.windowControls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 1rem;
+  background: rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.trafficLights {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.trafficLight {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 0.5px solid rgba(0, 0, 0, 0.2);
+}
+
+.trafficLight[data-color="red"] {
+  background: #ff5f56;
+}
+
+.trafficLight[data-color="yellow"] {
+  background: #ffbd2e;
+}
+
+.trafficLight[data-color="green"] {
+  background: #27c93f;
+}
+
+.windowTitle {
+  flex: 1;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+}
+
+.expandButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.expandButton:hover {
+  background: rgba(96, 165, 250, 0.1);
+  color: var(--color-primary);
+}
+
+/* ============================================
+   VS CODE STYLE TAB BAR
+   ============================================ */
+
+.tabBar {
+  display: flex;
+  gap: 0;
+  padding: 0 0.75rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  background: rgba(96, 165, 250, 0.08);
+  border: 1px solid rgba(96, 165, 250, 0.15);
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  font-size: 0.8125rem;
+  color: var(--color-primary);
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  position: relative;
+  top: 1px;
+}
+
+.tabDot {
+  font-size: 0.625rem;
+  opacity: 0.7;
+}
+
+.tabLabel {
+  font-weight: 500;
+}
+
+.tabClose {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.5;
+  padding: 0;
+  margin-left: 0.25rem;
+  transition: opacity 0.2s ease;
+}
+
+.tabClose:hover {
+  opacity: 1;
+}
+
+/* ============================================
+   CONTENT LAYOUT - 55/45 RATIO
+   ============================================ */
+
+.content {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.05);
+  height: calc(540px - 88px); /* Total - (controls + tab) */
+}
+
+/* ============================================
+   CODE EDITOR (55%)
+   ============================================ */
+
+.editor {
+  background: rgba(15, 23, 42, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.editorContent {
+  flex: 1;
+  display: flex;
+  overflow: auto;
+  padding: 0.75rem 0;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(96, 165, 250, 0.3) transparent;
+}
+
+.editorContent::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.editorContent::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.editorContent::-webkit-scrollbar-thumb {
+  background: rgba(96, 165, 250, 0.3);
+  border-radius: 3px;
+}
+
+.lineNumbers {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0.75rem;
+  user-select: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.lineNumber {
+  height: 1.4rem;
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  font-size: 0.8125rem;
+  color: var(--text-tertiary);
+  opacity: 0.5;
+  text-align: right;
+  line-height: 1.4rem;
+}
+
+.codeBlock {
+  flex: 1;
+  margin: 0;
+  padding: 0 0.875rem;
+  overflow: visible;
+}
+
+.code {
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  font-size: 0.8125rem;
+  line-height: 1.4rem;
+  color: var(--text-primary);
+}
+
+.codeLine {
+  height: 1.4rem;
+  white-space: pre;
+}
+
+/* Syntax Highlighting */
+.code :global(.keyword) {
+  color: #c792ea;
+  font-weight: 600;
+}
+
+.code :global(.string) {
+  color: #c3e88d;
+}
+
+.code :global(.property) {
+  color: #82aaff;
+}
+
+.code :global(.boolean) {
+  color: #f07178;
+  font-weight: 600;
+}
+
+.code :global(.function) {
+  color: #82aaff;
+  font-weight: 600;
+}
+
+/* ============================================
+   VS CODE STYLE STATUS BAR
+   ============================================ */
+
+.statusBar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.375rem 0.875rem;
+  background: rgba(0, 0, 0, 0.4);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  font-size: 0.6875rem;
+  height: 28px;
+}
+
+.statusItem {
+  color: var(--text-tertiary);
+  font-weight: 500;
+}
+
+.statusReady {
+  margin-left: auto;
+  color: #10b981;
+  font-weight: 600;
+}
+
+/* ============================================
+   TERMINAL (45%)
+   ============================================ */
+
+.terminal {
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.terminalHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.terminalTitle {
+  flex: 1;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+}
+
+/* Compact Run Button */
+.runButton {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
+  position: relative;
+}
+
+.runButton:hover:not(:disabled) {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 3px 10px rgba(16, 185, 129, 0.4);
+}
+
+.runButton:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+
+.runButton:disabled,
+.runButton.running {
+  opacity: 0.8;
+  cursor: not-allowed;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
+  }
+  50% {
+    box-shadow: 0 2px 6px rgba(16, 185, 129, 0.6);
+  }
+}
+
+.runButton svg {
+  flex-shrink: 0;
+}
+
+/* Terminal Content - Max 10 lines */
+.terminalContent {
+  flex: 1;
+  padding: 0.75rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  max-height: calc(540px - 88px - 46px); /* Total - controls/tab - header */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(96, 165, 250, 0.3) transparent;
+}
+
+.terminalContent::-webkit-scrollbar {
+  width: 6px;
+}
+
+.terminalContent::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.terminalContent::-webkit-scrollbar-thumb {
+  background: rgba(96, 165, 250, 0.3);
+  border-radius: 3px;
+}
+
+/* Terminal Placeholder */
+.terminalPlaceholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  height: 100%;
+  color: var(--text-tertiary);
+  text-align: center;
+  opacity: 0.5;
+}
+
+.terminalPlaceholder svg {
+  opacity: 0.6;
+}
+
+.terminalPlaceholder span {
+  font-size: 0.8125rem;
+}
+
+/* Terminal Lines */
+.terminalLine {
+  margin-bottom: 0.25rem;
+}
+
+.terminalLine.typing {
+  animation: none;
+}
+
+/* Terminal Line Types */
+.type-command {
+  color: #60a5fa;
+  font-weight: 600;
+}
+
+.type-info {
+  color: #60a5fa;
+}
+
+.type-success {
+  color: #10b981;
+}
+
+.type-result {
+  color: #8b5cf6;
+  font-weight: 600;
+  margin-top: 0.375rem;
+}
+
+/* Moving Cursor */
+.cursor {
+  display: inline-block;
+  background: var(--color-primary);
+  color: transparent;
+  animation: blink 0.9s step-end infinite;
+  margin-left: 1px;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   EXPANDED MODAL
+   ============================================ */
+
+.expandedOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 3vw, 2rem);
+  animation: overlayFadeIn 0.3s ease;
+  cursor: pointer;
+}
+
+@keyframes overlayFadeIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(16px);
+  }
+}
+
+.expandedPlayground {
+  width: 100%;
+  max-width: 1100px;
+  height: 80vh;
+  max-height: 700px;
+  background: linear-gradient(
+    135deg,
+    var(--glass-bg) 0%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 
+    0 24px 64px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(96, 165, 250, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  animation: modalSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: default;
+  position: relative;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+.expandedPlayground .content {
+  height: calc(80vh - 88px);
+  max-height: calc(700px - 88px);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Laptop */
+@media (max-width: 1440px) {
+  .playground {
+    height: 500px;
+  }
+
+  .content {
+    height: calc(500px - 88px);
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .playground {
+    height: 480px;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    height: calc(480px - 88px);
+  }
+
+  .editor {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .playgroundSection {
+    padding: clamp(2.5rem, 6vw, 3.5rem) var(--spacing-md);
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .playground {
+    height: 450px;
+    border-radius: 12px;
+  }
+
+  .windowControls {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .trafficLight {
+    width: 10px;
+    height: 10px;
+  }
+
+  .tabBar {
+    padding: 0 0.5rem;
+  }
+
+  .tab {
+    padding: 0.375rem 0.625rem;
+    font-size: 0.75rem;
+  }
+
+  .content {
+    height: calc(450px - 82px);
+  }
+
+  .editorContent,
+  .terminalContent {
+    font-size: 0.75rem;
+    padding: 0.625rem;
+  }
+
+  .lineNumber {
+    font-size: 0.75rem;
+  }
+
+  .statusBar {
+    font-size: 0.625rem;
+    padding: 0.25rem 0.75rem;
+    height: 24px;
+  }
+
+  .runButton {
+    padding: 0.25rem 0.625rem;
+    font-size: 0.6875rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .playgroundSection {
+    padding: var(--spacing-2xl) var(--spacing-sm);
+  }
+
+  .playground {
+    height: 420px;
+  }
+
+  .content {
+    height: calc(420px - 76px);
+  }
+
+  .windowTitle {
+    font-size: 0.6875rem;
+  }
+
+  .expandButton {
+    width: 20px;
+    height: 20px;
+  }
+
+  .expandButton svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+[data-theme='dark'] .playground {
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.9) 0%,
+    rgba(30, 41, 59, 0.85) 100%
+  );
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.5),
+    0 12px 40px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+[data-theme='dark'] .editor {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='dark'] .terminal {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .playground,
+  .runButton,
+  .cursor,
+  .expandedOverlay,
+  .expandedPlayground {
+    animation: none !important;
+  }
+
+  .cursor {
+    opacity: 1;
+  }
+
+  .runButton:hover:not(:disabled) {
+    transform: none !important;
+  }
+}
+
+.runButton:focus-visible,
+.expandButton:focus-visible,
+.closeButton:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATION
+   ============================================ */
+
+.playground,
+.terminalLine,
+.expandedPlayground {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-2xl);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.headerLeft svg {
+  color: var(--color-primary);
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  color: var(--text-tertiary);
+  font-weight: 500;
+}
+
+/* ============================================
+   PLAYGROUND WINDOW
+   ============================================ */
+
+.playground {
+  background: linear-gradient(
+    135deg,
+    var(--glass-bg) 0%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    0 20px 64px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  animation: playgroundFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes playgroundFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   TABS
+   ============================================ */
+
+.tabs {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.75rem 1rem 0;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+}
+
+.tabActive {
+  background: rgba(96, 165, 250, 0.1);
+  border-color: rgba(96, 165, 250, 0.2);
+  color: var(--color-primary);
+  border-bottom-color: transparent;
+}
+
+.tabIcon {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.tabLabel {
+  font-weight: 500;
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+}
+
+/* ============================================
+   CONTENT LAYOUT
+   ============================================ */
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.05);
+  min-height: 500px;
+}
+
+/* ============================================
+   CODE EDITOR
+   ============================================ */
+
+.editor {
+  background: rgba(15, 23, 42, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.editorHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.editorTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.editorActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.language {
+  padding: 0.25rem 0.625rem;
+  background: rgba(96, 165, 250, 0.15);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+}
+
+.editorContent {
+  flex: 1;
+  display: flex;
+  overflow: auto;
+  padding: 1rem 0;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(96, 165, 250, 0.3) transparent;
+}
+
+.editorContent::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.editorContent::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.editorContent::-webkit-scrollbar-thumb {
+  background: rgba(96, 165, 250, 0.3);
+  border-radius: 4px;
+}
+
+.lineNumbers {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+  user-select: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.lineNumber {
+  height: 1.5rem;
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+  opacity: 0.5;
+  text-align: right;
+  line-height: 1.5rem;
+}
+
+.codeBlock {
+  flex: 1;
+  margin: 0;
+  padding: 0 1rem;
+  overflow: visible;
+}
+
+.code {
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  color: var(--text-primary);
+}
+
+.codeLine {
+  height: 1.5rem;
+  white-space: pre;
+}
+
+/* Syntax Highlighting */
+.code :global(.keyword) {
+  color: #c792ea;
+  font-weight: 600;
+}
+
+.code :global(.string) {
+  color: #c3e88d;
+}
+
+.code :global(.property) {
+  color: #82aaff;
+}
+
+.code :global(.comment) {
+  color: #546e7a;
+  font-style: italic;
+}
+
+.code :global(.boolean) {
+  color: #f07178;
+  font-weight: 600;
+}
+
+/* ============================================
+   TERMINAL
+   ============================================ */
+
+.terminal {
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.terminalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.terminalTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Run Button */
+.runButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.runButton::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.runButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);
+}
+
+.runButton:hover:not(:disabled)::before {
+  opacity: 1;
+}
+
+.runButton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.runButton:disabled,
+.runButton.running {
+  opacity: 0.7;
+  cursor: not-allowed;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+  }
+  50% {
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.6);
+  }
+}
+
+.runButton svg {
+  flex-shrink: 0;
+}
+
+/* Terminal Content */
+.terminalContent {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(96, 165, 250, 0.3) transparent;
+}
+
+.terminalContent::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terminalContent::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.terminalContent::-webkit-scrollbar-thumb {
+  background: rgba(96, 165, 250, 0.3);
+  border-radius: 4px;
+}
+
+/* Terminal Placeholder */
+.terminalPlaceholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  height: 100%;
+  color: var(--text-tertiary);
+  text-align: center;
+  opacity: 0.6;
+}
+
+.terminalPlaceholder svg {
+  opacity: 0.5;
+}
+
+.terminalPlaceholder p {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.terminalPlaceholder span {
+  font-size: 0.875rem;
+}
+
+/* Terminal Lines */
+.terminalLine {
+  margin-bottom: 0.375rem;
+  animation: terminalLineFadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+
+@keyframes terminalLineFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.terminalLine.typing {
+  animation: none;
+}
+
+/* Terminal Line Types */
+.type-info {
+  color: #60a5fa;
+}
+
+.type-success {
+  color: #10b981;
+}
+
+.type-loading {
+  color: #f59e0b;
+}
+
+.type-result {
+  color: #8b5cf6;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+/* Cursor */
+.cursor {
+  display: inline-block;
+  background: var(--color-primary);
+  color: transparent;
+  animation: blink 1s step-end infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.footer {
+  margin-top: var(--spacing-xl);
+  padding: 1rem 1.5rem;
+  background: linear-gradient(
+    135deg,
+    rgba(96, 165, 250, 0.08) 0%,
+    rgba(168, 85, 247, 0.08) 100%
+  );
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.footerInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.footerLabel {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.footerText {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: 1fr;
+    min-height: 600px;
+  }
+
+  .editor {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .playgroundSection {
+    padding: clamp(3rem, 8vw, 6rem) var(--spacing-md);
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tabs {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.8125rem;
+  }
+
+  .content {
+    min-height: 500px;
+  }
+
+  .editorContent,
+  .terminalContent {
+    font-size: 0.8125rem;
+  }
+
+  .lineNumber {
+    font-size: 0.75rem;
+  }
+
+  .runButton {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.8125rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .playgroundSection {
+    padding: var(--spacing-2xl) var(--spacing-sm);
+  }
+
+  .playground {
+    border-radius: 16px;
+  }
+
+  .tabs {
+    padding: 0.5rem 0.75rem 0;
+  }
+
+  .tab {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .content {
+    min-height: 450px;
+  }
+
+  .editorHeader,
+  .terminalHeader {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .editorContent,
+  .terminalContent {
+    padding: 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .lineNumbers {
+    padding: 0 0.5rem;
+  }
+
+  .codeBlock {
+    padding: 0 0.5rem;
+  }
+
+  .footer {
+    padding: 0.75rem 1rem;
+  }
+
+  .footerInfo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+[data-theme='dark'] .playground {
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.9) 0%,
+    rgba(30, 41, 59, 0.85) 100%
+  );
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    0 20px 64px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+[data-theme='dark'] .editor {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='dark'] .terminal {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .playground,
+  .terminalLine,
+  .runButton {
+    animation: none !important;
+  }
+
+  .cursor {
+    animation: none !important;
+    opacity: 1;
+  }
+
+  .runButton:hover:not(:disabled) {
+    transform: none !important;
+  }
+}
+
+/* Focus visible */
+.runButton:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATION
+   ============================================ */
+
+.playground,
+.terminalLine {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}

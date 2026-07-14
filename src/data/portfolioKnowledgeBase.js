@@ -180,8 +180,8 @@ export const knowledgeBase = {
     location: "Ethiopia",
     availability: "Open for Freelance, Remote, and Full-Time opportunities",
     social: {
-      github: "https://github.com/anan",
-      linkedin: "https://linkedin.com/in/anan",
+      github: "https://github.com/AnanSer",
+      linkedin: "https://linkedin.com/in/anan-serbesa",
       twitter: "https://twitter.com/anan"
     },
     responseTime: "Usually responds within 24 hours",

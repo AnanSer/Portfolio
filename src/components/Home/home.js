@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import style from "./home.module.css";
-import me from "../../assets/images/me.jpg";
+import mypic from "../../assets/images/mypic.jpeg";
 import { HireMeButton } from "../UI/Button";
 import FloatingElements from "../Background/FloatingElements";
 import TypewriterText from "../UI/TypewriterText";
@@ -74,9 +74,10 @@ const HomePage = () => {
               <TypewriterText
                 texts={[
                   "Full Stack Developer",
+                  "Frontend Developer",
                   "Backend Developer",
-                  "Node.js Developer",
                   "Next.js Developer",
+                  "Node.js Developer",
                   "TypeScript Developer"
                 ]}
               />
@@ -110,7 +111,7 @@ const HomePage = () => {
         </div>
 
         <div className={style["profile-picture"]} ref={profileRef}>
-          <img src={me} alt="Anan Serbesa - Web Developer and Designer" />
+          <img src={mypic} alt="Anan Serbesa - Web Developer and Designer" />
         </div>
       </section>
     </div>

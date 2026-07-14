@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import style from "./header.module.css";
 import portfolio from "../../assets/images/portfolio.png";
 import ThemeToggle from "../UI/ThemeToggle";
+import { Download } from "lucide-react";
+import CV from "../../assets/images/Anan_Serbesa_CV.pdf";
 
 const Navbar = () => {
   const [menuActive, setMenuActive] = useState(false);
@@ -20,6 +22,8 @@ const Navbar = () => {
     { name: "Home", path: "#home" },
     { name: "About", path: "#about" },
     { name: "Journey", path: "#journey" },
+    { name: "Dashboard", path: "#dashboard" },
+    { name: "Playground", path: "#playground" },
     { name: "Services", path: "#services" },
     { name: "Projects", path: "#projects" },
     { name: "Testimonials", path: "#testimonials" },
@@ -68,6 +72,15 @@ const Navbar = () => {
     setMenuActive(!menuActive);
   };
 
+  const handleDownloadCV = () => {
+    const link = document.createElement('a');
+    link.href = CV;
+    link.download = 'Anan_Serbesa_CV.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <nav 
       className={`${style.navbar} ${scrolled ? style.scrolled : ''}`} 
@@ -103,6 +116,15 @@ const Navbar = () => {
         </ul>
         
         <div className={style["navbar-actions"]}>
+          <button 
+            className={style["cv-button"]}
+            onClick={handleDownloadCV}
+            aria-label="Download CV"
+            title="Download CV"
+          >
+            <Download size={18} strokeWidth={2} />
+            <span className={style["cv-button-text"]}>CV</span>
+          </button>
           <ThemeToggle />
           <button 
             className={style["navbar-toggle"]} 

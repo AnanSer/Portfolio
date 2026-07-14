@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Github, ExternalLink, FileText, ChevronLeft, ChevronRight } from "lucide-react";
+import { Github, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import styles from "./Projects.module.css";
 import useCardTilt from "../../hooks/useCardTilt";
 import useRippleEffect from "../../hooks/useRippleEffect";
+import ProjectFocusPanel from "./ProjectFocusPanel";
 
 // Project images
 import BudgetTracker from "../../assets/images/budget tracker.png";
@@ -11,8 +12,56 @@ import creative_design from "../../assets/images/creative-design.png";
 import adduser from "../../assets/images/adduser.png";
 import taskManagement from "../../assets/images/taskManagemnt.png";
 import Food from "../../assets/images/food1.png";
+import TrafficFine from "../../assets/images/Screenshot 2024-11-24 174536.png"; // Traffic Fine Management image
+import LetterManagement from "../../assets/images/form-img.png"; // Letter Management image
 
 const projects = [
+  {
+    title: "Digital Traffic Fine Management System (DTFMS)",
+    description:
+      "A full-stack traffic fine management platform serving four distinct user roles: Drivers, Vehicle Owners, Traffic Officers, and Supervisors. Implemented secure authentication and role-based dashboards controlling access to violation records and payment workflows.",
+    image: TrafficFine,
+    github: "https://github.com/AnanSer/DTFMS",
+    liveDemo: "https://traffic-ease.vercel.app/",
+    caseStudy: null,
+    status: "Completed",
+    technologies: ["Next.js", "Node.js", "Express.js", "Supabase", "Tailwind CSS"],
+    caseStudyData: {
+      problem: "Manual traffic fine management caused delays and inefficiencies across multiple user roles.",
+      solution: ["Role-Based Auth", "Payment Gateway", "Violation Records", "Officer Dashboard", "Reporting System", "Real-time Updates"],
+      role: "Full Stack Developer",
+      duration: "4 Months",
+      highlights: [
+        "Secure authentication for 4 user roles",
+        "Integrated payment workflows",
+        "Built supervisor reporting module",
+        "Scalable architecture design"
+      ]
+    }
+  },
+  {
+    title: "Letter Management System",
+    description:
+      "A secure institutional system for creating, routing, approving, and archiving official letters and documents. Built role-based authentication and RESTful APIs to support multi-step organizational approval workflows, replacing manual paper-based tracking with a searchable digital record.",
+    image: LetterManagement,
+    github: "https://github.com/AnanSer/LetterManagement",
+    liveDemo: "https://let-proj.vercel.app/",
+    caseStudy: null,
+    status: "Completed",
+    technologies: ["MongoDB", "Express.js", "React.js", "Node.js"],
+    caseStudyData: {
+      problem: "Paper-based letter tracking was slow, unsearchable, and prone to loss.",
+      solution: ["Document Creation", "Approval Workflows", "Digital Archive", "Role Management", "RESTful API", "Search System"],
+      role: "MERN Stack Developer",
+      duration: "3 Months",
+      highlights: [
+        "Multi-step approval workflows",
+        "RESTful API architecture",
+        "Searchable digital records",
+        "Responsive interface design"
+      ]
+    }
+  },
   {
     title: "Expense Tracker",
     description:
@@ -23,6 +72,18 @@ const projects = [
     caseStudy: null,
     status: "Completed",
     technologies: ["React", "CSS", "JavaScript"],
+    caseStudyData: {
+      problem: "Users needed an intuitive way to track expenses and manage personal budgets.",
+      solution: ["Expense Tracking", "Budget Management", "Data Visualization", "Category System", "Real-time Updates", "Export Reports"],
+      role: "Frontend Developer",
+      duration: "2 Months",
+      highlights: [
+        "Real-time expense tracking",
+        "Visual budget analytics",
+        "Category-based organization",
+        "Responsive design"
+      ]
+    }
   },
   {
     title: "Food Order App",
@@ -34,6 +95,18 @@ const projects = [
     caseStudy: null,
     status: "Completed",
     technologies: ["React", "Firebase", "CSS", "JavaScript"],
+    caseStudyData: {
+      problem: "Customers needed a seamless way to browse menus and place orders online.",
+      solution: ["Menu Browsing", "Cart Management", "Order Tracking", "Firebase Backend", "Real-time Updates", "Responsive UI"],
+      role: "Full Stack Developer",
+      duration: "2 Months",
+      highlights: [
+        "Real-time menu updates",
+        "Cart management system",
+        "Firebase integration",
+        "Mobile-optimized interface"
+      ]
+    }
   },
   {
     title: "Creative Design",
@@ -45,6 +118,18 @@ const projects = [
     caseStudy: null,
     status: "Completed",
     technologies: ["HTML", "CSS", "JavaScript"],
+    caseStudyData: {
+      problem: "Needed to create an engaging landing page with modern design patterns.",
+      solution: ["Modern Layout", "CSS Animations", "Responsive Grid", "Interactive Elements", "Visual Hierarchy", "Performance"],
+      role: "Frontend Developer",
+      duration: "1 Month",
+      highlights: [
+        "Modern CSS techniques",
+        "Smooth animations",
+        "Responsive design",
+        "Performance optimized"
+      ]
+    }
   },
   {
     title: "Food Website",
@@ -56,6 +141,18 @@ const projects = [
     caseStudy: null,
     status: "Completed",
     technologies: ["HTML", "CSS", "JavaScript"],
+    caseStudyData: {
+      problem: "Restaurant needed an attractive online presence to showcase their menu.",
+      solution: ["Menu Display", "Image Gallery", "Contact Form", "Responsive Layout", "Navigation System", "SEO Optimized"],
+      role: "Frontend Developer",
+      duration: "1 Month",
+      highlights: [
+        "Attractive menu presentation",
+        "Easy navigation",
+        "Mobile-friendly design",
+        "Fast loading times"
+      ]
+    }
   },
   {
     title: "User Management System",
@@ -67,6 +164,18 @@ const projects = [
     caseStudy: null,
     status: "Completed",
     technologies: ["React", "CSS", "JavaScript"],
+    caseStudyData: {
+      problem: "Applications needed a robust user registration and profile management system.",
+      solution: ["User Registration", "Profile Management", "Form Validation", "State Management", "Data Persistence", "User Dashboard"],
+      role: "Frontend Developer",
+      duration: "1 Month",
+      highlights: [
+        "Seamless registration flow",
+        "Profile management",
+        "Form validation",
+        "User-friendly interface"
+      ]
+    }
   },
   {
     title: "Task Management",
@@ -78,20 +187,43 @@ const projects = [
     caseStudy: null,
     status: "Completed",
     technologies: ["React", "CSS", "JavaScript"],
+    caseStudyData: {
+      problem: "Teams needed an efficient way to organize, prioritize, and track their tasks.",
+      solution: ["Task Creation", "Priority Levels", "Status Tracking", "Drag & Drop", "Task Categories", "Progress View"],
+      role: "Frontend Developer",
+      duration: "2 Months",
+      highlights: [
+        "Intuitive task creation",
+        "Priority management",
+        "Real-time updates",
+        "Collaborative features"
+      ]
+    }
   },
 ];
 
-// ProjectCard component with tilt effect
-const ProjectCard = ({ project, index, currentIndex }) => {
+// ProjectCard component - SIMPLIFIED (No expansion, just selection)
+const ProjectCard = ({ project, index, currentIndex, isSelected, onSelect }) => {
   const tiltRef = useCardTilt(4);
   const createRipple = useRippleEffect();
+
+  // Single unified selection handler
+  const handleSelect = (e) => {
+    // Don't select if clicking on external links (Live Demo, GitHub)
+    if (e.target.closest('a')) {
+      return;
+    }
+    e.stopPropagation();
+    onSelect(index);
+  };
 
   return (
     <article
       ref={tiltRef}
       className={`${styles['project-card']} ${
         index === currentIndex ? styles['active'] : ''
-      }`}
+      } ${isSelected ? styles['selected'] : ''}`}
+      onClick={handleSelect}
     >
       {/* Project Image */}
       <div className={styles['project-image-wrapper']}>
@@ -121,6 +253,15 @@ const ProjectCard = ({ project, index, currentIndex }) => {
 
         {/* Action Buttons */}
         <div className={styles['project-actions']}>
+          <button
+            className={`${styles.btn} ${styles['btn-learn-more']}`}
+            onClick={handleSelect}
+            aria-label="View project details"
+            data-cursor="pointer"
+          >
+            View Details
+          </button>
+
           <a
             href={project.liveDemo || "#"}
             target={project.liveDemo ? "_blank" : "_self"}
@@ -159,21 +300,6 @@ const ProjectCard = ({ project, index, currentIndex }) => {
             <Github size={18} strokeWidth={2.5} />
             GitHub
           </a>
-          
-          {project.caseStudy && (
-            <a
-              href={project.caseStudy}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${styles.btn} ${styles['btn-tertiary']}`}
-              onClick={createRipple}
-              aria-label={`Read ${project.title} case study`}
-              data-cursor="pointer"
-            >
-              <FileText size={18} strokeWidth={2.5} />
-              Case Study
-            </a>
-          )}
         </div>
       </div>
     </article>
@@ -183,11 +309,22 @@ const ProjectCard = ({ project, index, currentIndex }) => {
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [selectedProject, setSelectedProject] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const sectionRef = useRef(null);
   const carouselRef = useRef(null);
+
+  // Handle project selection
+  const handleSelectProject = (index) => {
+    setSelectedProject(projects[index]);
+  };
+
+  // Close focus panel
+  const handleCloseFocusPanel = () => {
+    setSelectedProject(null);
+  };
 
   // Section visibility observer
   useEffect(() => {
@@ -312,13 +449,17 @@ const Projects = () => {
 
   const handleMouseUp = () => {
     setIsDragging(false);
-    carouselRef.current.style.cursor = 'grab';
+    if (carouselRef.current) {
+      carouselRef.current.style.cursor = 'grab';
+    }
   };
 
   const handleMouseLeave = () => {
     if (isDragging) {
       setIsDragging(false);
-      carouselRef.current.style.cursor = 'grab';
+      if (carouselRef.current) {
+        carouselRef.current.style.cursor = 'grab';
+      }
     }
   };
 
@@ -350,7 +491,7 @@ const Projects = () => {
         </p>
       </div>
 
-      <div className={styles['carousel-wrapper']}>
+      <div className={`${styles['carousel-wrapper']}`}>
         <button
           className={`${styles['nav-button']} ${styles['nav-prev']}`}
           onClick={goToPrevious}
@@ -375,6 +516,8 @@ const Projects = () => {
               project={project}
               index={index}
               currentIndex={currentIndex}
+              isSelected={selectedProject && projects.indexOf(selectedProject) === index}
+              onSelect={handleSelectProject}
             />
           ))}
         </div>
@@ -407,6 +550,14 @@ const Projects = () => {
         <span className={styles.divider}>•</span>
         <span>Next →</span>
       </div>
+
+      {/* Floating Focus Panel */}
+      {selectedProject && (
+        <ProjectFocusPanel 
+          project={selectedProject} 
+          onClose={handleCloseFocusPanel} 
+        />
+      )}
     </section>
   );
 };

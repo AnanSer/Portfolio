@@ -5,7 +5,7 @@ import styles from "./social-icons.module.css"; // Import the CSS file for style
 const SocialIcons = () => {
   const socialLinks = [
     {
-      href: "https://www.linkedin.com/in/anan-ser1177/",
+      href: "https://linkedin.com/in/anan-serbesa",
       icon: <Linkedin />,
     },
     {

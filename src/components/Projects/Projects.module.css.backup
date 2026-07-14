@@ -87,7 +87,6 @@
 .projects-carousel {
   display: flex;
   gap: 1.25rem;
-  align-items: center;
   will-change: scroll-position;
   user-select: none;
   overflow-x: auto;
@@ -98,8 +97,8 @@
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
   cursor: grab;
-  padding: 3rem 1rem;
-  margin: -3rem -1rem;
+  padding: 2rem 1rem;
+  margin: -2rem -1rem;
 }
 
 /* Add padding to first and last card for better visibility */
@@ -488,7 +487,6 @@
   flex: 1;
   position: relative;
   z-index: 1;
-  min-height: 0;
 }
 
 .project-title {
@@ -597,8 +595,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-top: auto;
-  padding-top: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
 }
 
 .btn {
@@ -727,41 +724,6 @@
   transform: translateX(6px) scale(1.1);
 }
 
-/* View Details Button - PRIMARY ACTION */
-.btn-learn-more {
-  background: linear-gradient(135deg, rgba(96, 165, 250, 0.15) 0%, rgba(168, 85, 247, 0.15) 100%);
-  color: var(--color-primary);
-  border-color: var(--color-primary);
-  font-weight: 600;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-learn-more::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: -1;
-}
-
-.btn-learn-more:hover {
-  color: white;
-  border-color: var(--color-primary);
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 8px 24px rgba(96, 165, 250, 0.4);
-}
-
-.btn-learn-more:hover::before {
-  opacity: 1;
-}
-
-.btn-learn-more:active {
-  transform: translateY(-1px) scale(1.01);
-}
-
 /* ============================================
    RESPONSIVE BREAKPOINTS
    ============================================ */
@@ -827,6 +789,13 @@
     border-radius: 16px;
   }
 
+  /* Mobile expanded card - only vertical expansion */
+  .project-card.expanded {
+    min-width: calc(50% - 0.5rem);
+    max-width: calc(50% - 0.5rem);
+    transform: translateY(-8px) scale(1) translateZ(0);
+  }
+
   .nav-button {
     width: 44px;
     height: 44px;
@@ -885,6 +854,13 @@
     min-width: 100%;
     max-width: 100%;
     border-radius: 16px;
+  }
+
+  /* Mobile expanded card - keep 100% width */
+  .project-card.expanded {
+    min-width: 100%;
+    max-width: 100%;
+    transform: translateY(-8px) scale(1) translateZ(0);
   }
 
   .nav-button {
@@ -1138,8 +1114,250 @@
 
 
 /* ============================================
-   RESPONSIVE BREAKPOINTS
+   PREMIUM CASE STUDY PANEL
    ============================================ */
+
+.case-study-panel {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+              opacity 0.5s ease;
+  margin-top: 0;
+  will-change: max-height, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.case-study-panel.panel-expanded {
+  max-height: 800px;
+  opacity: 1;
+  margin-top: clamp(1rem, 2vw, 1.5rem);
+}
+
+.case-study-content {
+  padding: clamp(1rem, 2vw, 1.5rem);
+  background: linear-gradient(
+    135deg,
+    rgba(96, 165, 250, 0.05) 0%,
+    rgba(168, 85, 247, 0.05) 100%
+  );
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Sequential Content Reveal */
+.panel-expanded .case-study-content > * {
+  animation: sequentialReveal 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+
+.panel-expanded .case-study-section:nth-child(1) {
+  animation-delay: 0ms;
+}
+
+.panel-expanded .case-study-section:nth-child(2) {
+  animation-delay: 100ms;
+}
+
+.panel-expanded .case-study-meta {
+  animation-delay: 400ms;
+}
+
+.panel-expanded .case-study-section:nth-child(4) {
+  animation-delay: 500ms;
+}
+
+@keyframes sequentialReveal {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Case Study Sections */
+.case-study-section {
+  margin-bottom: clamp(1rem, 2vw, 1.25rem);
+}
+
+.case-study-section:last-child {
+  margin-bottom: 0;
+}
+
+.case-study-label {
+  font-size: clamp(0.75rem, 1vw, 0.8125rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-primary);
+  margin: 0 0 clamp(0.5rem, 1vw, 0.625rem) 0;
+  opacity: 0.9;
+}
+
+.case-study-text {
+  font-size: clamp(0.875rem, 1.2vw, 0.9375rem);
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Solution Chips */
+.solution-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.5rem, 1vw, 0.625rem);
+}
+
+.solution-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: clamp(0.375rem, 0.75vw, 0.5rem) clamp(0.75rem, 1.5vw, 1rem);
+  background: rgba(96, 165, 250, 0.1);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  border-radius: 20px;
+  font-size: clamp(0.75rem, 1vw, 0.8125rem);
+  font-weight: 500;
+  color: var(--color-primary);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  opacity: 0;
+  animation: chipFadeIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.panel-expanded .solution-chip:nth-child(1) { animation-delay: 250ms; }
+.panel-expanded .solution-chip:nth-child(2) { animation-delay: 280ms; }
+.panel-expanded .solution-chip:nth-child(3) { animation-delay: 310ms; }
+.panel-expanded .solution-chip:nth-child(4) { animation-delay: 340ms; }
+.panel-expanded .solution-chip:nth-child(5) { animation-delay: 370ms; }
+.panel-expanded .solution-chip:nth-child(6) { animation-delay: 400ms; }
+
+@keyframes chipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.solution-chip:hover {
+  background: rgba(96, 165, 250, 0.2);
+  border-color: rgba(96, 165, 250, 0.5);
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* Meta Section */
+.case-study-meta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin-bottom: clamp(1rem, 2vw, 1.25rem);
+  padding: clamp(0.75rem, 1.5vw, 1rem);
+  background: rgba(96, 165, 250, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(96, 165, 250, 0.1);
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.25rem, 0.5vw, 0.375rem);
+}
+
+.meta-value {
+  font-size: clamp(0.875rem, 1.2vw, 1rem);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Highlights List */
+.highlights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 1vw, 0.625rem);
+}
+
+.highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(0.5rem, 1vw, 0.625rem);
+  font-size: clamp(0.875rem, 1.2vw, 0.9375rem);
+  line-height: 1.6;
+  color: var(--text-secondary);
+  opacity: 0;
+  padding-left: 0.25rem;
+  position: relative;
+}
+
+.panel-expanded .highlight-item {
+  animation: highlightFadeIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.panel-expanded .highlight-item:nth-child(1) { animation-delay: 500ms; }
+.panel-expanded .highlight-item:nth-child(2) { animation-delay: 530ms; }
+.panel-expanded .highlight-item:nth-child(3) { animation-delay: 560ms; }
+.panel-expanded .highlight-item:nth-child(4) { animation-delay: 590ms; }
+
+@keyframes highlightFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.highlight-item::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  margin-top: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* Learn More Button */
+.btn-learn-more {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  color: var(--btn-primary-text);
+  border: none;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-learn-more::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.btn-learn-more:hover::before {
+  opacity: 1;
+}
+
+.btn-learn-more:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(96, 165, 250, 0.3);
+}
 
 /* ============================================
    PREMIUM FOCUS MODE - CARD EXPANSION
@@ -1160,7 +1378,7 @@
 .project-card.expanded {
   min-width: min(680px, calc(100vw - 4rem));
   max-width: min(680px, calc(100vw - 4rem));
-  transform: translateY(0) scale(1) translateZ(0);
+  transform: translateY(-10px) scale(1) translateZ(0);
   z-index: 100;
   box-shadow: 
     0 30px 90px var(--project-shadow-color-strong),
@@ -1172,7 +1390,7 @@
     rgba(255, 255, 255, 0.08) 0%,
     rgba(255, 255, 255, 0.04) 100%
   );
-  margin: 2rem auto;
+  margin: 0 auto;
   position: relative;
   left: 0;
   right: 0;

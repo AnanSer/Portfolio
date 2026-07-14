@@ -14,7 +14,7 @@ const Footer = () => {
           <h3 className={styles.footerTitle}>Connect</h3>
           <div className={styles.socialIcons} role="list" aria-label="Social media links">
             <a
-              href="https://www.linkedin.com/in/anan-ser1177/"
+              href="https://linkedin.com/in/anan-serbesa"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn profile"

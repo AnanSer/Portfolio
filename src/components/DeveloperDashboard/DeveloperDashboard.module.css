@@ -1,0 +1,1133 @@
+/* ============================================
+   DEVELOPER WORKSPACE - COLLAPSIBLE VS CODE
+   ============================================ */
+
+.workspaceSection {
+  width: 100%;
+  padding: 0 clamp(1rem, 3vw, 2rem);
+  margin: clamp(3rem, 6vw, 5rem) 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.workspaceSection.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   COLLAPSED HEADER
+   ============================================ */
+
+.collapsedHeader {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(1.5rem, 3vw, 2rem) clamp(1.5rem, 3vw, 2.5rem);
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.98) 100%);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.collapsedHeader::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(96, 165, 250, 0.05) 0%,
+    transparent 50%,
+    rgba(168, 85, 247, 0.05) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.collapsedHeader:hover::before {
+  opacity: 1;
+}
+
+.collapsedHeader:hover {
+  transform: translateY(-4px);
+  border-color: rgba(96, 165, 250, 0.5);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(96, 165, 250, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+}
+
+.folderIcon {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  filter: drop-shadow(0 0 12px rgba(96, 165, 250, 0.4));
+  transition: transform 0.3s ease;
+}
+
+.collapsedHeader:hover .folderIcon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.125rem, 0.25vw, 0.25rem);
+}
+
+.headerTitle {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  color: #f1f5f9;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.headerSubtitle {
+  font-size: clamp(0.875rem, 1.2vw, 1rem);
+  color: #94a3b8;
+  margin: 0;
+  font-weight: 400;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.onlineStatus {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 20px;
+  color: #10b981;
+  font-size: clamp(0.8rem, 1vw, 0.875rem);
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.onlineDot {
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+}
+
+.collapsedHeader .expandIcon {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  color: #60a5fa;
+  transition: transform 0.3s ease;
+}
+
+.collapsedHeader .expandIcon.expanded {
+  transform: rotate(180deg);
+}
+
+/* ============================================
+   WORKSPACE CONTENT - COLLAPSIBLE
+   ============================================ */
+
+.workspaceContent {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.4s ease;
+}
+
+.workspaceSection.expanded .workspaceContent {
+  max-height: 5000px;
+  opacity: 1;
+  margin-top: clamp(1rem, 2vw, 1.5rem);
+}
+
+.workspaceContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 0;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(30, 41, 59, 0.99) 100%);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  min-height: 600px;
+}
+
+/* ============================================
+   FILE EXPLORER - VS CODE STYLE
+   ============================================ */
+
+.explorer {
+  background: rgba(15, 23, 42, 0.8);
+  border-right: 1px solid rgba(96, 165, 250, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.explorerHeader {
+  padding: clamp(0.75rem, 1.5vw, 1rem);
+  background: rgba(10, 15, 30, 0.6);
+  border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.explorerTitle {
+  font-size: clamp(0.7rem, 1vw, 0.75rem);
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 1px;
+  font-family: 'Courier New', monospace;
+}
+
+.terminalDots {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 6px currentColor;
+}
+
+.fileTree {
+  padding: clamp(0.5rem, 1vw, 0.75rem) 0;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.rootFolder {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.5rem;
+  color: #f1f5f9;
+  font-weight: 600;
+  font-size: clamp(0.875rem, 1.1vw, 0.9375rem);
+}
+
+.rootName {
+  font-family: 'Courier New', monospace;
+}
+
+.fileItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: clamp(0.375rem, 0.75vw, 0.5rem) clamp(0.5rem, 1vw, 0.75rem);
+  color: #cbd5e1;
+  font-size: clamp(0.8rem, 1vw, 0.875rem);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-left: 2px solid transparent;
+  font-family: 'Courier New', monospace;
+}
+
+.fileItem:hover {
+  background: rgba(96, 165, 250, 0.1);
+  color: #f1f5f9;
+  border-left-color: rgba(96, 165, 250, 0.5);
+}
+
+.fileItem.selected {
+  background: rgba(96, 165, 250, 0.15);
+  color: #f1f5f9;
+  border-left-color: #60a5fa;
+  font-weight: 600;
+}
+
+.fileItem.folder {
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.fileIcon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.fileName {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fileItem .expandIcon {
+  font-size: 0.625rem;
+  color: #94a3b8;
+  transition: transform 0.2s ease;
+  margin-right: -0.25rem;
+}
+
+.folderContents {
+  overflow: hidden;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 500px;
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   CONTENT VIEWER
+   ============================================ */
+
+.contentViewer {
+  display: flex;
+  flex-direction: column;
+  background: rgba(20, 25, 45, 0.6);
+}
+
+.contentHeader {
+  background: rgba(15, 23, 42, 0.8);
+  border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+  padding: 0;
+  display: flex;
+}
+
+.contentTab {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: clamp(0.625rem, 1.25vw, 0.875rem) clamp(1rem, 2vw, 1.5rem);
+  background: rgba(30, 41, 59, 0.8);
+  border-right: 1px solid rgba(96, 165, 250, 0.2);
+  color: #f1f5f9;
+  font-size: clamp(0.8rem, 1vw, 0.875rem);
+  font-weight: 500;
+  font-family: 'Courier New', monospace;
+  min-width: 200px;
+}
+
+.tabIcon {
+  font-size: 1rem;
+}
+
+.tabName {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contentBody {
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  overflow-y: auto;
+  flex: 1;
+  color: #e2e8f0;
+  line-height: 1.7;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   CONTENT STYLES
+   ============================================ */
+
+/* README Content */
+.readmeContent h3 {
+  font-size: clamp(1.5rem, 2.5vw, 1.75rem);
+  color: #f1f5f9;
+  margin: 0 0 1rem 0;
+  font-weight: 700;
+}
+
+.readmeContent h4 {
+  font-size: clamp(1.125rem, 1.75vw, 1.25rem);
+  color: #60a5fa;
+  margin: 1.5rem 0 0.75rem 0;
+  font-weight: 600;
+}
+
+.readmeContent p {
+  margin: 0 0 1rem 0;
+  font-size: clamp(0.9375rem, 1.2vw, 1rem);
+  color: #cbd5e1;
+}
+
+.readmeContent ul {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+.readmeContent li {
+  margin: 0.5rem 0;
+  color: #cbd5e1;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: 24px;
+  color: #10b981;
+  font-weight: 600;
+  font-size: clamp(0.875rem, 1.1vw, 0.9375rem);
+  margin: 1rem 0 1.5rem 0;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.statusDot {
+  font-size: 1rem;
+}
+
+/* JSON Content */
+.jsonContent {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(0.8125rem, 1vw, 0.875rem);
+  line-height: 1.6;
+  color: #a5f3fc;
+  background: rgba(10, 15, 30, 0.6);
+  padding: clamp(1rem, 2vw, 1.5rem);
+  border-radius: 12px;
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  overflow-x: auto;
+  margin: 0;
+}
+
+/* Config Content */
+.configContent,
+.tsContent,
+.envContent {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(0.8125rem, 1vw, 0.875rem);
+  line-height: 1.6;
+  color: #cbd5e1;
+  background: rgba(10, 15, 30, 0.6);
+  padding: clamp(1rem, 2vw, 1.5rem);
+  border-radius: 12px;
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  overflow-x: auto;
+  margin: 0;
+}
+
+/* Project Content */
+.projectContent h4 {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  color: #f1f5f9;
+  margin: 0 0 1rem 0;
+  font-weight: 700;
+}
+
+.projectContent p {
+  margin: 0.75rem 0;
+  font-size: clamp(0.9375rem, 1.2vw, 1rem);
+  color: #cbd5e1;
+}
+
+.projectContent strong {
+  color: #60a5fa;
+  font-weight: 600;
+}
+
+.projectContent ul {
+  margin: 0.5rem 0 1rem 1.5rem;
+  padding: 0;
+  list-style-type: disc;
+}
+
+.projectContent li {
+  margin: 0.5rem 0;
+  color: #cbd5e1;
+}
+
+.techTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.75rem 0 1rem 0;
+}
+
+.techTags span {
+  padding: 0.375rem 0.875rem;
+  background: rgba(96, 165, 250, 0.15);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  border-radius: 6px;
+  color: #60a5fa;
+  font-size: clamp(0.8125rem, 1vw, 0.875rem);
+  font-weight: 500;
+  font-family: 'Courier New', monospace;
+}
+
+.projectLinks {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.linkBtn {
+  padding: 0.625rem 1.5rem;
+  background: rgba(96, 165, 250, 0.1);
+  border: 1px solid rgba(96, 165, 250, 0.4);
+  border-radius: 8px;
+  color: #60a5fa;
+  font-size: clamp(0.875rem, 1.1vw, 0.9375rem);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.linkBtn:hover {
+  background: rgba(96, 165, 250, 0.2);
+  border-color: #60a5fa;
+  transform: translateY(-2px);
+}
+
+/* Learning Content */
+.learningContent h3 {
+  font-size: clamp(1.5rem, 2.5vw, 1.75rem);
+  color: #f1f5f9;
+  margin: 0 0 1rem 0;
+  font-weight: 700;
+}
+
+.learningContent > p {
+  margin: 0 0 1.5rem 0;
+  color: #94a3b8;
+  font-size: clamp(0.9375rem, 1.2vw, 1rem);
+}
+
+.learningItem {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: rgba(10, 15, 30, 0.4);
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  border-radius: 12px;
+}
+
+.learningItem h4 {
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  color: #60a5fa;
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+}
+
+.learningItem p {
+  margin: 0 0 0.75rem 0;
+  color: #cbd5e1;
+  font-size: clamp(0.875rem, 1.1vw, 0.9375rem);
+}
+
+.progressBar {
+  width: 100%;
+  height: 8px;
+  background: rgba(15, 23, 42, 0.8);
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(96, 165, 250, 0.3);
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(90deg, #60a5fa 0%, #a78bfa 100%);
+  border-radius: 4px;
+  transition: width 0.6s ease;
+  box-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+}
+
+/* AI Content */
+.aiContent h3 {
+  font-size: clamp(1.5rem, 2.5vw, 1.75rem);
+  color: #f1f5f9;
+  margin: 0 0 1rem 0;
+  font-weight: 700;
+}
+
+.aiContent h4 {
+  font-size: clamp(1.125rem, 1.75vw, 1.25rem);
+  color: #60a5fa;
+  margin: 1.5rem 0 0.75rem 0;
+  font-weight: 600;
+}
+
+.aiContent p {
+  margin: 0 0 1rem 0;
+  color: #cbd5e1;
+  font-size: clamp(0.9375rem, 1.2vw, 1rem);
+}
+
+.aiContent ul {
+  margin: 0.5rem 0 1rem 1.5rem;
+  padding: 0;
+  list-style-type: disc;
+}
+
+.aiContent li {
+  margin: 0.5rem 0;
+  color: #cbd5e1;
+}
+
+.aiExample {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(96, 165, 250, 0.1);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  border-radius: 12px;
+}
+
+.aiExample strong {
+  color: #60a5fa;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .workspaceContainer {
+    grid-template-columns: 240px 1fr;
+    min-height: 500px;
+  }
+
+  .explorerTitle {
+    font-size: 0.7rem;
+  }
+}
+
+/* Mobile - Stack Layout */
+@media (max-width: 768px) {
+  .workspaceContainer {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .explorer {
+    border-right: none;
+    border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .contentViewer {
+    min-height: 400px;
+  }
+
+  .onlineStatus {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .headerRight {
+    gap: 0.75rem;
+  }
+
+  .collapsedHeader {
+    padding: 1.25rem 1rem;
+  }
+
+  .projectLinks {
+    flex-direction: column;
+  }
+
+  .linkBtn {
+    text-align: center;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 425px) {
+  .workspaceSection {
+    padding: 0 clamp(0.75rem, 1.5vw, 1rem);
+  }
+
+  .collapsedHeader {
+    padding: 1rem 0.875rem;
+  }
+
+  .headerLeft {
+    gap: 0.75rem;
+  }
+
+  .folderIcon {
+    font-size: 1.5rem;
+  }
+
+  .onlineStatus {
+    display: none;
+  }
+
+  .contentBody {
+    padding: 1.25rem 1rem;
+  }
+
+  .fileTree {
+    padding: 0.375rem 0;
+  }
+
+  .rootFolder {
+    padding: 0.375rem 0.5rem;
+  }
+
+  .fileItem {
+    padding: 0.375rem 0.5rem;
+    font-size: 0.8125rem;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY - REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .workspaceSection,
+  .collapsedHeader,
+  .workspaceContent,
+  .fileItem,
+  .contentBody,
+  .folderContents {
+    transition: none;
+    animation: none;
+  }
+
+  .collapsedHeader:hover {
+    transform: none;
+  }
+
+  .onlineDot {
+    animation: none;
+  }
+
+  .progress {
+    transition: none;
+  }
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATION
+   ============================================ */
+
+.workspaceContent,
+.collapsedHeader,
+.fileItem {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+
+/* ============================================
+   ENHANCED ANIMATIONS - README
+   ============================================ */
+
+.readmeContent.animated .fadeInTitle {
+  animation: fadeInDown 0.6s ease forwards;
+  opacity: 0;
+}
+
+.readmeContent.animated .slideUpPara {
+  animation: slideUpFade 0.6s ease forwards;
+  opacity: 0;
+  animation-delay: 0.3s;
+}
+
+.readmeContent.animated .scaleBadge {
+  animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 0;
+  animation-delay: 0.6s;
+}
+
+.readmeContent.animated .rolesList {
+  list-style: none;
+  padding-left: 0;
+}
+
+.readmeContent.animated .roleItem {
+  animation: slideInLeft 0.5s ease forwards;
+  opacity: 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.readmeContent.animated .roleItem::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: #60a5fa;
+  font-weight: bold;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ============================================
+   ENHANCED ANIMATIONS - JSON
+   ============================================ */
+
+.jsonLine {
+  animation: fadeInJSON 0.4s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInJSON {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ============================================
+   ENHANCED ANIMATIONS - PROJECTS
+   ============================================ */
+
+.projectContent {
+  animation: projectFadeIn 0.6s ease forwards;
+}
+
+@keyframes projectFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.projectImage {
+  animation: imageFadeIn 0.6s ease forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+
+@keyframes imageFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.imagePlaceholder:hover {
+  transform: scale(1.02);
+}
+
+.projectInfo {
+  animation: infoSlideUp 0.6s ease forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+
+@keyframes infoSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.projectBadges {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: 12px;
+  color: #10b981;
+  font-size: clamp(0.75rem, 1vw, 0.8125rem);
+  font-weight: 600;
+  animation: badgeFadeIn 0.5s ease forwards;
+  opacity: 0;
+}
+
+.badge:nth-child(1) {
+  animation-delay: 0.5s;
+}
+
+.badge:nth-child(2) {
+  animation-delay: 0.6s;
+}
+
+@keyframes badgeFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.projectLinks {
+  animation: linksFadeIn 0.5s ease forwards;
+  animation-delay: 0.7s;
+  opacity: 0;
+}
+
+@keyframes linksFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.techTags span {
+  animation: techTagFade 0.4s ease forwards;
+  opacity: 0;
+}
+
+.techTags span:nth-child(1) { animation-delay: 0.5s; }
+.techTags span:nth-child(2) { animation-delay: 0.55s; }
+.techTags span:nth-child(3) { animation-delay: 0.6s; }
+.techTags span:nth-child(4) { animation-delay: 0.65s; }
+.techTags span:nth-child(5) { animation-delay: 0.7s; }
+.techTags span:nth-child(6) { animation-delay: 0.75s; }
+
+@keyframes techTagFade {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ============================================
+   ENHANCED EXPLORER ANIMATIONS
+   ============================================ */
+
+.fileItem .expandIcon {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fileItem .expandIcon.rotated {
+  transform: rotate(90deg);
+}
+
+.fileItem {
+  position: relative;
+}
+
+.fileItem::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #60a5fa;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: scaleY(0);
+}
+
+.fileItem.selected::before {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.fileItem:hover {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.folderContents {
+  animation: folderExpand 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes folderExpand {
+  from {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    max-height: 500px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   CONTENT BODY ANIMATION
+   ============================================ */
+
+.contentBody {
+  animation: contentFadeSlide 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes contentFadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY - REDUCED MOTION UPDATES
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .readmeContent.animated .fadeInTitle,
+  .readmeContent.animated .slideUpPara,
+  .readmeContent.animated .scaleBadge,
+  .readmeContent.animated .roleItem,
+  .jsonLine,
+  .projectContent,
+  .projectImage,
+  .projectInfo,
+  .badge,
+  .projectLinks,
+  .techTags span,
+  .folderContents,
+  .contentBody {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .fileItem .expandIcon {
+    transition: none;
+  }
+
+  .fileItem::before {
+    transition: none;
+  }
+}

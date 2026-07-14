@@ -135,11 +135,19 @@ const ContactPage = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
+    // Prepare template parameters
+    const templateParams = {
+      from_name: formState.name,
+      from_email: formState.email,
+      message: formState.message,
+      to_name: "Anan Serbesa",
+    };
+    
     emailjs
-      .sendForm(
+      .send(
         "service_c4f3c67",
         "template_wftg2cj",
-        e.target,
+        templateParams,
         "s1aoHosd6fDt2Wldn"
       )
       .then(
@@ -156,7 +164,7 @@ const ContactPage = () => {
         },
         (error) => {
           console.log("Failed to send message:", error.text);
-          alert("Failed to send message. Please try again later.");
+          alert("Failed to send message. Please try again or contact me directly at ananserbesa@gmail.com");
           setIsSubmitting(false);
         }
       );
@@ -398,7 +406,7 @@ const ContactPage = () => {
               <span>GitHub</span>
             </a>
             <a
-              href="https://linkedin.com/in/yourprofile"
+              href="https://linkedin.com/in/anan-serbesa"
               target="_blank"
               rel="noopener noreferrer"
               className={styles['contact-btn']}
@@ -408,8 +416,8 @@ const ContactPage = () => {
               <span>LinkedIn</span>
             </a>
             <a
-              href="/resume.pdf"
-              download
+              href={require("../../assets/images/Anan_Serbesa_CV.pdf")}
+              download="Anan_Serbesa_CV.pdf"
               className={styles['contact-btn']}
               aria-label="Download resume"
             >
