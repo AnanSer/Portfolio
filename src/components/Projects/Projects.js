@@ -1,8 +1,11 @@
-import React, { useEffect, useRef } from "react";
-import { GitlabIcon as GitHub, ExternalLink } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
+import { Github, ExternalLink, FileText, ChevronLeft, ChevronRight } from "lucide-react";
+import styles from "./Projects.module.css";
+import useCardTilt from "../../hooks/useCardTilt";
+import useRippleEffect from "../../hooks/useRippleEffect";
 
-import styles from "./projects.module.css";
-import BudgetTracker from "../../assets/images/budget tracker.png"; // Fix the import
+// Project images
+import BudgetTracker from "../../assets/images/budget tracker.png";
 import Food_Order_App from "../../assets/images/food order.png";
 import creative_design from "../../assets/images/creative-design.png";
 import adduser from "../../assets/images/adduser.png";
@@ -13,128 +16,396 @@ const projects = [
   {
     title: "Expense Tracker",
     description:
-      "  A dynamic web application that enables users to effortlessly track their expenses, manage budgets, and visualize their financial data in real-time for smarter financial management.",
+      "A dynamic web application that enables users to effortlessly track their expenses, manage budgets, and visualize their financial data in real-time for smarter financial management.",
     image: BudgetTracker,
     github: "https://github.com/AnanSer/Expense-Tracker",
-    technologies: ["REACT", "CSS", "JavaScript"],
+    liveDemo: null,
+    caseStudy: null,
+    status: "Completed",
+    technologies: ["React", "CSS", "JavaScript"],
   },
-
   {
-    title: "Food Order",
+    title: "Food Order App",
     description:
       "Designed to streamline the online ordering experience. This dynamic web application allows users to browse a variety of menu items, customize their orders, and easily manage their selections in real-time.",
     image: Food_Order_App,
     github: "https://github.com/AnanSer/Food_Order_App",
-    technologies: ["React", "firebase", "CSS", "javascript"],
+    liveDemo: null,
+    caseStudy: null,
+    status: "Completed",
+    technologies: ["React", "Firebase", "CSS", "JavaScript"],
   },
-
   {
     title: "Creative Design",
     description:
       "Elevates the user experience through visually appealing elements and intuitive navigation.",
     image: creative_design,
     github: "https://github.com/AnanSer/Expense-Tracker",
+    liveDemo: null,
+    caseStudy: null,
+    status: "Completed",
     technologies: ["HTML", "CSS", "JavaScript"],
   },
-
   {
-    title: "Food",
+    title: "Food Website",
     description:
       "The design invites users to explore a diverse menu while ensuring easy navigation. Each element is thoughtfully arranged to guide users seamlessly.",
     image: Food,
     github: "https://github.com/AnanSer/food",
+    liveDemo: null,
+    caseStudy: null,
+    status: "Completed",
     technologies: ["HTML", "CSS", "JavaScript"],
   },
-
   {
-    title: "Add User",
+    title: "User Management System",
     description:
       "Implemented a seamless user registration and management system that enhances user experience by allowing individuals to easily create accounts, manage their profiles, and access personalized features within the application.",
     image: adduser,
     github: "https://github.com/AnanSer/UserFormInterface",
-    technologies: ["REACT", "CSS", "JavaScript"],
+    liveDemo: null,
+    caseStudy: null,
+    status: "Completed",
+    technologies: ["React", "CSS", "JavaScript"],
   },
-
   {
     title: "Task Management",
     description:
-      "  Developed a comprehensive task management application that enhances productivity by allowing users to create, prioritize, and track tasks seamlessly, fostering collaboration and efficient workflow through intuitive design and real-time updates.",
+      "Developed a comprehensive task management application that enhances productivity by allowing users to create, prioritize, and track tasks seamlessly, fostering collaboration and efficient workflow through intuitive design and real-time updates.",
     image: taskManagement,
     github: "https://github.com/AnanSer/Styling-Task-Management-project",
+    liveDemo: null,
+    caseStudy: null,
+    status: "Completed",
     technologies: ["React", "CSS", "JavaScript"],
   },
 ];
 
-const Projects = () => {
-  const projectsRef = useRef(null);
+// ProjectCard component with tilt effect
+const ProjectCard = ({ project, index, currentIndex }) => {
+  const tiltRef = useCardTilt(4);
+  const createRipple = useRippleEffect();
 
+  return (
+    <article
+      ref={tiltRef}
+      className={`${styles['project-card']} ${
+        index === currentIndex ? styles['active'] : ''
+      }`}
+    >
+      {/* Project Image */}
+      <div className={styles['project-image-wrapper']}>
+        <div className={styles['project-image']}>
+          <img
+            src={project.image}
+            alt={`${project.title} preview`}
+            loading="lazy"
+          />
+          <div className={styles['image-overlay']}></div>
+        </div>
+      </div>
+
+      {/* Project Content */}
+      <div className={styles['project-content']}>
+        <h3 className={styles['project-title']}>{project.title}</h3>
+        <p className={styles['project-description']}>{project.description}</p>
+
+        {/* Technology Badges */}
+        <div className={styles['tech-badges']} aria-label="Technologies used">
+          {project.technologies.map((tech, techIndex) => (
+            <span key={techIndex} className={styles['tech-badge']}>
+              {tech}
+            </span>
+          ))}
+        </div>
+
+        {/* Action Buttons */}
+        <div className={styles['project-actions']}>
+          <a
+            href={project.liveDemo || "#"}
+            target={project.liveDemo ? "_blank" : "_self"}
+            rel={project.liveDemo ? "noopener noreferrer" : ""}
+            className={`${styles.btn} ${styles['btn-primary']} ${
+              !project.liveDemo ? styles['btn-disabled'] : ''
+            }`}
+            onClick={(e) => {
+              if (!project.liveDemo) {
+                e.preventDefault();
+              } else {
+                createRipple(e);
+              }
+            }}
+            aria-label={
+              project.liveDemo
+                ? `View ${project.title} live demo`
+                : `Live demo for ${project.title} coming soon`
+            }
+            aria-disabled={!project.liveDemo}
+            data-cursor="pointer"
+          >
+            <ExternalLink size={18} strokeWidth={2.5} />
+            Live
+          </a>
+          
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${styles.btn} ${styles['btn-secondary']}`}
+            onClick={createRipple}
+            aria-label={`View ${project.title} source code on GitHub`}
+            data-cursor="pointer"
+          >
+            <Github size={18} strokeWidth={2.5} />
+            GitHub
+          </a>
+          
+          {project.caseStudy && (
+            <a
+              href={project.caseStudy}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${styles.btn} ${styles['btn-tertiary']}`}
+              onClick={createRipple}
+              aria-label={`Read ${project.title} case study`}
+              data-cursor="pointer"
+            >
+              <FileText size={18} strokeWidth={2.5} />
+              Case Study
+            </a>
+          )}
+        </div>
+      </div>
+    </article>
+  );
+};
+
+const Projects = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const sectionRef = useRef(null);
+  const carouselRef = useRef(null);
+
+  // Section visibility observer
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    const sectionObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add(styles.animate);
-          } else {
-            entry.target.classList.remove(styles.animate);
+          if (entry.isIntersecting && !isVisible) {
+            setIsVisible(true);
           }
         });
       },
-      {
-        threshold: 0.1,
-        rootMargin: "0px 0px -100px 0px",
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      sectionObserver.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        sectionObserver.disconnect();
       }
-    );
+    };
+  }, [isVisible]);
 
-    const projectItems = projectsRef.current.querySelectorAll(
-      `.${styles.projectItem}`
-    );
-    projectItems.forEach((item) => observer.observe(item));
+  // Calculate cards to show per view
+  const getCardsPerView = () => {
+    if (window.innerWidth >= 1024) return 3;
+    if (window.innerWidth >= 768) return 2;
+    return 1;
+  };
 
-    return () => observer.disconnect();
+  const [cardsPerView, setCardsPerView] = useState(getCardsPerView());
+
+  // Update cards per view on resize
+  useEffect(() => {
+    const handleResize = () => {
+      setCardsPerView(getCardsPerView());
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Navigation functions
+  const goToNext = () => {
+    if (carouselRef.current) {
+      const cardWidth = carouselRef.current.scrollWidth / projects.length;
+      carouselRef.current.scrollBy({
+        left: cardWidth,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const goToPrevious = () => {
+    if (carouselRef.current) {
+      const cardWidth = carouselRef.current.scrollWidth / projects.length;
+      carouselRef.current.scrollBy({
+        left: -cardWidth,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const goToSlide = (index) => {
+    if (carouselRef.current) {
+      const cardWidth = carouselRef.current.scrollWidth / projects.length;
+      carouselRef.current.scrollTo({
+        left: cardWidth * index,
+        behavior: 'smooth'
+      });
+      setCurrentIndex(index);
+    }
+  };
+
+  // Update current index based on scroll position
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    const handleScroll = () => {
+      const cardWidth = carousel.scrollWidth / projects.length;
+      const scrollPosition = carousel.scrollLeft;
+      const newIndex = Math.round(scrollPosition / cardWidth);
+      setCurrentIndex(newIndex);
+    };
+
+    carousel.addEventListener('scroll', handleScroll);
+    return () => carousel.removeEventListener('scroll', handleScroll);
+  }, [projects.length]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "ArrowLeft") {
+        goToPrevious();
+      } else if (e.key === "ArrowRight") {
+        goToNext();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  // Mouse drag handling
+  const handleMouseDown = (e) => {
+    setIsDragging(true);
+    setStartX(e.pageX - carouselRef.current.offsetLeft);
+    setScrollLeft(carouselRef.current.scrollLeft);
+    carouselRef.current.style.cursor = 'grabbing';
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - carouselRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    carouselRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    carouselRef.current.style.cursor = 'grab';
+  };
+
+  const handleMouseLeave = () => {
+    if (isDragging) {
+      setIsDragging(false);
+      carouselRef.current.style.cursor = 'grab';
+    }
+  };
+
+  // Touch handling
+  const handleTouchStart = (e) => {
+    setStartX(e.touches[0].pageX);
+    setScrollLeft(carouselRef.current.scrollLeft);
+  };
+
+  const handleTouchMove = (e) => {
+    const x = e.touches[0].pageX;
+    const walk = (x - startX) * 1.5;
+    carouselRef.current.scrollLeft = scrollLeft - walk;
+  };
+
   return (
-    <section id="projects" className={styles.projects} ref={projectsRef}>
-      <h2 className={styles.title}>My Projects</h2>
-      <div className={styles.projectsGrid}>
-        {projects.map((project, index) => (
-          <div key={index} className={styles.projectItem}>
-            <div className={styles.projectImage}>
-              <img src={project.image} alt={project.title} />
-            </div>
-            <div className={styles.projectContent}>
-              <h3 className={styles.projectTitle}>{project.title}</h3>
-              <p className={styles.projectDescription}>{project.description}</p>
-              <div className={styles.projectLinks}>
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.projectLink}
-                >
-                  <GitHub size={20} />
-                  GitHub
-                </a>
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.projectLink}
-                >
-                  <ExternalLink size={20} />
-                  Live Demo
-                </a>
-              </div>
-              <div className={styles.projectTechnologies}>
-                {project.technologies.map((tech, techIndex) => (
-                  <span key={techIndex} className={styles.technology}>
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
+    <section
+      id="projects"
+      ref={sectionRef}
+      className={`${styles['projects-section']} ${isVisible ? styles.visible : ''}`}
+      aria-label="Projects showcase"
+    >
+      <div className={styles['section-header']}>
+        <span className={styles.eyebrow}>Featured Work</span>
+        <h2 className={styles['section-title']}>Projects That Solve Real Problems</h2>
+        <p className={styles['section-subtitle']}>
+          A collection of applications built with modern technologies focusing on
+          performance, scalability, and user experience.
+        </p>
+      </div>
+
+      <div className={styles['carousel-wrapper']}>
+        <button
+          className={`${styles['nav-button']} ${styles['nav-prev']}`}
+          onClick={goToPrevious}
+          aria-label="Previous project"
+        >
+          <ChevronLeft size={24} strokeWidth={2.5} />
+        </button>
+
+        <div
+          ref={carouselRef}
+          className={styles['projects-carousel']}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseLeave}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+        >
+          {projects.map((project, index) => (
+            <ProjectCard
+              key={index}
+              project={project}
+              index={index}
+              currentIndex={currentIndex}
+            />
+          ))}
+        </div>
+
+        <button
+          className={`${styles['nav-button']} ${styles['nav-next']}`}
+          onClick={goToNext}
+          aria-label="Next project"
+        >
+          <ChevronRight size={24} strokeWidth={2.5} />
+        </button>
+      </div>
+
+      <div className={styles['carousel-dots']}>
+        {projects.map((_, index) => (
+          <button
+            key={index}
+            className={`${styles.dot} ${index === currentIndex ? styles['dot-active'] : ''}`}
+            onClick={() => goToSlide(index)}
+            aria-label={`Go to project ${index + 1}`}
+            aria-current={index === currentIndex}
+          />
         ))}
+      </div>
+
+      <div className={styles['nav-instructions']}>
+        <span>← Previous</span>
+        <span className={styles.divider}>•</span>
+        <span>Drag or Swipe</span>
+        <span className={styles.divider}>•</span>
+        <span>Next →</span>
       </div>
     </section>
   );

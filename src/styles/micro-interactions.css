@@ -1,0 +1,292 @@
+/* ============================================
+   GLOBAL MICRO-INTERACTIONS & PREMIUM POLISH
+   ============================================ */
+
+/* Hide default cursor on desktop for custom cursor */
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+  
+  /* Restore cursor for specific elements when custom cursor is not available */
+  input, textarea, select {
+    cursor: text !important;
+  }
+  
+  /* Show normal cursor in AI chat panel */
+  [class*="chatPanel"],
+  [class*="chatPanel"] *,
+  [class*="floatingButton"],
+  [class*="AIAssistant"] {
+    cursor: auto !important;
+  }
+  
+  [class*="chatPanel"] input,
+  [class*="chatPanel"] textarea,
+  [class*="chatPanel"] button {
+    cursor: pointer !important;
+  }
+  
+  [class*="chatPanel"] input[type="text"],
+  [class*="chatPanel"] textarea {
+    cursor: text !important;
+  }
+}
+
+/* Touch devices - show default cursor */
+@media (hover: none) and (pointer: coarse) {
+  * {
+    cursor: auto !important;
+  }
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* GPU Acceleration for transforms */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* ============================================
+   BUTTON RIPPLE CONTAINER
+   ============================================ */
+
+button,
+a[role="button"],
+[data-cursor="pointer"] {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* ============================================
+   MAGNETIC EFFECT SMOOTHNESS
+   ============================================ */
+
+[data-magnetic] {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
+}
+
+/* ============================================
+   CARD TILT SUPPORT
+   ============================================ */
+
+[data-tilt] {
+  transform-style: preserve-3d;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
+}
+
+/* ============================================
+   HOVER LIFT EFFECT - GLOBAL
+   ============================================ */
+
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+/* ============================================
+   FOCUS STATES - ACCESSIBLE
+   ============================================ */
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+/* ============================================
+   SELECTION STYLING
+   ============================================ */
+
+::selection {
+  background: rgba(75, 108, 183, 0.3);
+  color: var(--text-primary);
+}
+
+::-moz-selection {
+  background: rgba(75, 108, 183, 0.3);
+  color: var(--text-primary);
+}
+
+/* Dark mode selection */
+[data-theme='dark'] ::selection {
+  background: rgba(96, 165, 250, 0.3);
+  color: var(--text-primary);
+}
+
+[data-theme='dark'] ::-moz-selection {
+  background: rgba(96, 165, 250, 0.3);
+  color: var(--text-primary);
+}
+
+/* ============================================
+   SCROLLBAR STYLING - PREMIUM
+   ============================================ */
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(75, 108, 183, 0.5) transparent;
+}
+
+/* Webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    var(--color-primary) 0%,
+    var(--color-accent) 100%
+  );
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    var(--color-accent) 0%,
+    #8b5cf6 100%
+  );
+}
+
+/* Dark mode scrollbar */
+[data-theme='dark'] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    var(--color-accent) 0%,
+    #8b5cf6 100%
+  );
+}
+
+/* ============================================
+   LOADING STATES - SHIMMER
+   ============================================ */
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.loading-shimmer {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 1000px 100%;
+}
+
+/* ============================================
+   FADE IN ANIMATIONS
+   ============================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ============================================
+   STAGGER DELAY UTILITIES
+   ============================================ */
+
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  /* Keep essential transitions */
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    transition: opacity 0.2s ease, background-color 0.2s ease;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  .no-print,
+  .scroll-to-top,
+  .scroll-progress-container,
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
+}
+
+/* ============================================
+   HIGH CONTRAST MODE
+   ============================================ */
+
+@media (prefers-contrast: high) {
+  :focus-visible {
+    outline-width: 3px;
+    outline-offset: 3px;
+  }
+  
+  .gradient-text {
+    -webkit-text-fill-color: inherit;
+    background-clip: border-box;
+  }
+}

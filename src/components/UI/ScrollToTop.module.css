@@ -1,0 +1,176 @@
+/* ============================================
+   SCROLL TO TOP BUTTON
+   ============================================ */
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: var(--text-primary);
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.8);
+  will-change: transform, opacity;
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.scroll-to-top:hover {
+  transform: translateY(-4px) scale(1.05);
+  background: linear-gradient(
+    135deg,
+    rgba(75, 108, 183, 0.15) 0%,
+    rgba(96, 165, 250, 0.1) 100%
+  );
+  border-color: var(--color-primary);
+  box-shadow: 
+    0 8px 24px rgba(75, 108, 183, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.scroll-to-top:active {
+  transform: translateY(-2px) scale(1);
+}
+
+.icon {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.scroll-to-top:hover .icon {
+  transform: translateY(-2px);
+}
+
+/* Progress Ring */
+.progress-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+
+.progress-ring-circle {
+  transition: stroke-dashoffset 0.1s ease-out;
+  color: var(--color-primary);
+  will-change: stroke-dashoffset;
+}
+
+/* Dark mode */
+[data-theme='dark'] .scroll-to-top {
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.8) 0%,
+    rgba(30, 41, 59, 0.7) 100%
+  );
+  border-color: rgba(96, 165, 250, 0.3);
+}
+
+[data-theme='dark'] .scroll-to-top:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(75, 108, 183, 0.2) 0%,
+    rgba(96, 165, 250, 0.15) 100%
+  );
+  border-color: var(--color-accent);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .scroll-to-top {
+    width: 48px;
+    height: 48px;
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+
+  .progress-ring {
+    width: 48px;
+    height: 48px;
+  }
+
+  .progress-ring-circle {
+    r: 21;
+    cx: 24;
+    cy: 24;
+  }
+
+  .icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 425px) {
+  .scroll-to-top {
+    width: 44px;
+    height: 44px;
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .progress-ring {
+    width: 44px;
+    height: 44px;
+  }
+
+  .progress-ring-circle {
+    r: 19;
+    cx: 22;
+    cy: 22;
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-to-top {
+    transition: opacity 0.3s ease;
+    transform: none;
+  }
+
+  .scroll-to-top.visible {
+    transform: none;
+  }
+
+  .scroll-to-top:hover {
+    transform: none;
+  }
+
+  .scroll-to-top:hover .icon {
+    transform: none;
+  }
+
+  .progress-ring-circle {
+    transition: none;
+  }
+}

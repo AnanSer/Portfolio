@@ -1,0 +1,328 @@
+/* ============================================
+   FLOATING BACKGROUND ELEMENTS
+   Premium Developer-Themed Atmosphere
+   ============================================ */
+
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  transition: transform 0.3s ease-out;
+}
+
+.element {
+  position: absolute;
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  user-select: none;
+  pointer-events: none;
+  will-change: transform;
+  white-space: nowrap;
+  color: var(--floating-element-color);
+  animation: float infinite ease-in-out;
+  filter: blur(1.5px);
+}
+
+/* ============================================
+   LAYER STYLES - Creating Visual Depth
+   ============================================ */
+
+/* Layer 1: Background - Smallest, Most Transparent, Slowest */
+.layer-1 {
+  z-index: 1;
+  filter: blur(2px);
+  text-shadow: var(--floating-element-shadow-subtle);
+}
+
+/* Layer 2: Midground - Medium Size, Semi-transparent, Medium Speed */
+.layer-2 {
+  z-index: 2;
+  filter: blur(1.8px);
+  text-shadow: var(--floating-element-shadow-medium);
+}
+
+/* Layer 3: Foreground - Largest, Most Visible, Highlighted */
+.layer-3 {
+  z-index: 3;
+  font-weight: 700;
+  filter: blur(1.5px);
+  text-shadow: var(--floating-element-shadow-glow);
+}
+
+/* ============================================
+   FLOATING ANIMATION
+   ============================================ */
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) rotate(var(--rotate-start, 0deg)) scale(1);
+    opacity: var(--base-opacity, 1);
+  }
+  15% {
+    transform: translate(15px, -20px) rotate(calc(var(--rotate-start, 0deg) + 5deg)) scale(1.02);
+    opacity: calc(var(--base-opacity, 1) * 0.95);
+  }
+  35% {
+    transform: translate(-10px, -35px) rotate(calc(var(--rotate-start, 0deg) - 3deg)) scale(0.98);
+    opacity: calc(var(--base-opacity, 1) * 0.85);
+  }
+  55% {
+    transform: translate(-18px, -25px) rotate(calc(var(--rotate-start, 0deg) + 2deg)) scale(1.03);
+    opacity: var(--base-opacity, 1);
+  }
+  75% {
+    transform: translate(8px, -15px) rotate(calc(var(--rotate-start, 0deg) - 4deg)) scale(0.99);
+    opacity: calc(var(--base-opacity, 1) * 0.9);
+  }
+  100% {
+    transform: translate(0, 0) rotate(var(--rotate-start, 0deg)) scale(1);
+    opacity: var(--base-opacity, 1);
+  }
+}
+
+/* Alternative animation for variety - Different direction */
+.element:nth-child(2n) {
+  animation-name: floatAlt;
+}
+
+@keyframes floatAlt {
+  0% {
+    transform: translate(0, 0) rotate(var(--rotate-start, 0deg)) scale(1);
+    opacity: var(--base-opacity, 1);
+  }
+  20% {
+    transform: translate(-20px, -28px) rotate(calc(var(--rotate-start, 0deg) - 6deg)) scale(1.04);
+    opacity: calc(var(--base-opacity, 1) * 0.95);
+  }
+  40% {
+    transform: translate(12px, -42px) rotate(calc(var(--rotate-start, 0deg) + 4deg)) scale(0.97);
+    opacity: calc(var(--base-opacity, 1) * 0.8);
+  }
+  60% {
+    transform: translate(18px, -32px) rotate(calc(var(--rotate-start, 0deg) - 2deg)) scale(1.02);
+    opacity: calc(var(--base-opacity, 1) * 0.9);
+  }
+  80% {
+    transform: translate(-8px, -18px) rotate(calc(var(--rotate-start, 0deg) + 5deg)) scale(0.99);
+    opacity: var(--base-opacity, 1);
+  }
+  100% {
+    transform: translate(0, 0) rotate(var(--rotate-start, 0deg)) scale(1);
+    opacity: var(--base-opacity, 1);
+  }
+}
+
+/* Another variation for even more organic feel - Diagonal movement */
+.element:nth-child(3n) {
+  animation-name: floatOrganic;
+}
+
+@keyframes floatOrganic {
+  0% {
+    transform: translate(0, 0) rotate(var(--rotate-start, 0deg)) scale(1);
+    opacity: var(--base-opacity, 1);
+  }
+  12% {
+    transform: translate(10px, -18px) rotate(calc(var(--rotate-start, 0deg) + 7deg)) scale(1.02);
+    opacity: var(--base-opacity, 1);
+  }
+  28% {
+    transform: translate(-15px, -32px) rotate(calc(var(--rotate-start, 0deg) - 4deg)) scale(0.98);
+    opacity: calc(var(--base-opacity, 1) * 0.85);
+  }
+  45% {
+    transform: translate(20px, -30px) rotate(calc(var(--rotate-start, 0deg) + 6deg)) scale(1.03);
+    opacity: calc(var(--base-opacity, 1) * 0.92);
+  }
+  62% {
+    transform: translate(-12px, -38px) rotate(calc(var(--rotate-start, 0deg) - 3deg)) scale(0.99);
+    opacity: calc(var(--base-opacity, 1) * 0.88);
+  }
+  80% {
+    transform: translate(6px, -22px) rotate(calc(var(--rotate-start, 0deg) + 4deg)) scale(1.01);
+    opacity: calc(var(--base-opacity, 1) * 0.95);
+  }
+  100% {
+    transform: translate(0, 0) rotate(var(--rotate-start, 0deg)) scale(1);
+    opacity: var(--base-opacity, 1);
+  }
+}
+
+/* Spiral movement for 4th variation */
+.element:nth-child(5n) {
+  animation-name: floatSpiral;
+}
+
+@keyframes floatSpiral {
+  0% {
+    transform: translate(0, 0) rotate(var(--rotate-start, 0deg)) scale(1);
+    opacity: var(--base-opacity, 1);
+  }
+  25% {
+    transform: translate(22px, -20px) rotate(calc(var(--rotate-start, 0deg) + 10deg)) scale(1.04);
+    opacity: calc(var(--base-opacity, 1) * 0.95);
+  }
+  50% {
+    transform: translate(12px, -40px) rotate(calc(var(--rotate-start, 0deg) + 20deg)) scale(0.97);
+    opacity: calc(var(--base-opacity, 1) * 0.82);
+  }
+  75% {
+    transform: translate(-15px, -28px) rotate(calc(var(--rotate-start, 0deg) + 30deg)) scale(1.02);
+    opacity: calc(var(--base-opacity, 1) * 0.9);
+  }
+  100% {
+    transform: translate(0, 0) rotate(calc(var(--rotate-start, 0deg) + 40deg)) scale(1);
+    opacity: var(--base-opacity, 1);
+  }
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+/* Tablets - Reduce animation intensity */
+@media (max-width: 1024px) {
+  .element {
+    font-size: 0.9em !important;
+    filter: blur(1.8px);
+  }
+  
+  .layer-1 {
+    filter: blur(2.2px);
+  }
+
+  .layer-2 {
+    filter: blur(2px);
+  }
+
+  .layer-3 {
+    filter: blur(1.8px);
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translate(0, 0) rotate(var(--rotate-start, 0deg));
+    }
+    50% {
+      transform: translate(-5px, -15px) rotate(calc(var(--rotate-start, 0deg) + 3deg));
+    }
+  }
+  
+  @keyframes floatAlt {
+    0%, 100% {
+      transform: translate(0, 0) rotate(var(--rotate-start, 0deg));
+    }
+    50% {
+      transform: translate(8px, -20px) rotate(calc(var(--rotate-start, 0deg) - 4deg));
+    }
+  }
+  
+  @keyframes floatOrganic {
+    0%, 100% {
+      transform: translate(0, 0) rotate(var(--rotate-start, 0deg));
+    }
+    50% {
+      transform: translate(-10px, -18px) rotate(calc(var(--rotate-start, 0deg) + 5deg));
+    }
+  }
+}
+
+/* Mobile - Further reduce animation */
+@media (max-width: 768px) {
+  .element {
+    font-size: 0.8em !important;
+    filter: blur(2px);
+  }
+  
+  .layer-1,
+  .layer-2 {
+    filter: blur(2.5px);
+  }
+
+  .layer-3 {
+    filter: blur(2px);
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translate(0, 0) rotate(var(--rotate-start, 0deg));
+    }
+    50% {
+      transform: translate(-3px, -10px) rotate(calc(var(--rotate-start, 0deg) + 2deg));
+    }
+  }
+  
+  @keyframes floatAlt {
+    0%, 100% {
+      transform: translate(0, 0) rotate(var(--rotate-start, 0deg));
+    }
+    50% {
+      transform: translate(5px, -12px) rotate(calc(var(--rotate-start, 0deg) - 3deg));
+    }
+  }
+  
+  @keyframes floatOrganic {
+    0%, 100% {
+      transform: translate(0, 0) rotate(var(--rotate-start, 0deg));
+    }
+    50% {
+      transform: translate(-6px, -11px) rotate(calc(var(--rotate-start, 0deg) + 2deg));
+    }
+  }
+}
+
+/* Small mobile - Minimal animation */
+@media (max-width: 480px) {
+  .element {
+    font-size: 0.7em !important;
+  }
+  
+  /* Disable parallax effect on small screens */
+  .container {
+    transform: none !important;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY - REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .element {
+    animation: none !important;
+  }
+  
+  .container {
+    transform: none !important;
+  }
+  
+  .layer-1,
+  .layer-2,
+  .layer-3 {
+    filter: none;
+  }
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATION
+   ============================================ */
+
+/* Hint to browser for GPU acceleration */
+.element {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Reduce blur on lower-end devices (optional) */
+@media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .layer-1,
+  .layer-2 {
+    filter: none;
+  }
+}

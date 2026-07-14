@@ -2,6 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import style from "./home.module.css";
 import me from "../../assets/images/me.jpg";
 import { HireMeButton } from "../UI/Button";
+import FloatingElements from "../Background/FloatingElements";
+import TypewriterText from "../UI/TypewriterText";
+import Statistics from "../Statistics/Statistics";
 
 const HomePage = () => {
   const profileRef = useRef(null);
@@ -45,36 +48,70 @@ const HomePage = () => {
       <section
         id="home"
         className={`${style.hero} ${scrollY > 50 ? style.scrolled : ""}`}
+        aria-label="Hero section"
       >
-        <div
-          className={`${style["hero-content"]} ${
-            scrollY > 50 ? style.scrolled : ""
-          }`}
-        >
-          <h1 className={`${style["animate-slide-up"]}`}>
-            Welcome to My Portfolio
-          </h1>
-          <br />
+        {/* Animated Gradient Mesh Background - Hero Only */}
+        <FloatingElements />
 
-          <h2
-            className={`${style["animate-slide-up"]} ${style["animate-delay-1"]}`}
+        <div className={style["hero-content-wrapper"]}>
+          <div
+            className={`${style["hero-content"]} ${
+              scrollY > 50 ? style.scrolled : ""
+            }`}
           >
-            I'm Anan Serbesa
-          </h2>
+            <div className={style["hero-badge"]}>
+              <span className={style["badge-dot"]}></span>
+              Available for Work
+            </div>
 
-          <p
-            className={`${style["animate-slide-up"]} ${style["animate-delay-2"]}`}
-          >
-            Web Developer & Designer
-          </p>
+            <h1 className={`${style["hero-title"]} ${style["animate-slide-up"]}`}>
+              Anan Serbesa
+            </h1>
+
+            <h2
+              className={`${style["hero-subtitle"]} ${style["animate-slide-up"]} ${style["animate-delay-1"]}`}
+            >
+              <TypewriterText
+                texts={[
+                  "Full Stack Developer",
+                  "Backend Developer",
+                  "Node.js Developer",
+                  "Next.js Developer",
+                  "TypeScript Developer"
+                ]}
+              />
+            </h2>
+
+            <p
+              className={`${style["hero-description"]} ${style["animate-slide-up"]} ${style["animate-delay-2"]}`}
+            >
+              Crafting beautiful, functional digital experiences with modern web technologies
+            </p>
+            
+            <div className={`${style["hero-actions"]} ${style["animate-slide-up"]} ${style["animate-delay-3"]}`}>
+              <HireMeButton />
+              <a href="#projects" className={style["btn-view-projects"]} onClick={(e) => {
+                e.preventDefault();
+                document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
+              }}>
+                <svg className={style["btn-icon"]} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="3" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="14" width="7" height="7"></rect>
+                  <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+                View Projects
+              </a>
+            </div>
+
+            {/* Professional Statistics */}
+            <Statistics />
+          </div>
         </div>
-
-        <div className={style["floating-background"]}></div>
 
         <div className={style["profile-picture"]} ref={profileRef}>
-          <img src={me} alt="anan" />
+          <img src={me} alt="Anan Serbesa - Web Developer and Designer" />
         </div>
-        <HireMeButton />
       </section>
     </div>
   );

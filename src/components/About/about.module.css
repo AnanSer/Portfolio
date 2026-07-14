@@ -1,139 +1,163 @@
+/* ============================================
+   ABOUT SECTION - RESPONSIVE & MODERN
+   ============================================ */
+
 .container {
-  background-color: #afc2ec;
-  height: 100vh;
-  width: 100vw;
+  background-color: var(--color-bg-light);
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
+  padding: clamp(3rem, 6vw, 5.5rem) clamp(1rem, 3vw, 2rem) clamp(3rem, 6vw, 5rem);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
 }
 
-.about,
-.skills {
-  padding: 4rem 2rem;
-  max-width: 800px;
+.about {
+  padding: 0;
+  max-width: var(--container-sm);
+  width: 100%;
   margin: 0 auto;
   text-align: center;
   opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition: opacity var(--transition-slow);
 }
 
-.about.visible,
-.skills.visible {
+.about.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-.about h2,
-.skills h2 {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  color: #182848;
+.about h2 {
+  font-size: var(--font-size-2xl);
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+  color: var(--color-text-dark);
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .about p {
-  font-size: 1.25rem;
-  color: #182848;
+  font-size: var(--font-size-base);
+  color: var(--color-text-dark);
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
-.skills ul {
-  list-style-type: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-}
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
 
-.skills li {
-  background-color: #182848;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 1rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.skills li:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(75, 108, 183, 0.4);
-}
-
-.skills.visible li {
-  animation: fadeInUp 0.5s ease forwards;
-  opacity: 0;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+/* Extra large desktops */
+@media (min-width: 1920px) {
+  .container {
+    padding: var(--spacing-2xl) var(--spacing-3xl);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  
+  .about,
+  .skills {
+    max-width: var(--container-md);
   }
 }
 
-.skills li:nth-child(1) {
-  animation-delay: 0.1s;
-}
-.skills li:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.skills li:nth-child(3) {
-  animation-delay: 0.3s;
-}
-.skills li:nth-child(4) {
-  animation-delay: 0.4s;
-}
-.skills li:nth-child(5) {
-  animation-delay: 0.5s;
+/* Large desktops */
+@media (min-width: 1440px) and (max-width: 1919px) {
+  .container {
+    padding: var(--spacing-2xl) var(--spacing-2xl);
+  }
 }
 
-/* Media Queries for Responsiveness */
+/* Standard desktops and laptops */
+@media (max-width: 1439px) {
+  .container {
+    padding: var(--spacing-xl) var(--spacing-lg);
+  }
+}
+
+/* Laptops */
+@media (max-width: 1024px) {
+  .container {
+    padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1rem, 2.5vw, 1.5rem) clamp(2.5rem, 5vw, 4rem);
+  }
+  
+  .about {
+    padding: 0;
+  }
+}
+
+/* Tablets */
 @media (max-width: 768px) {
-  .about,
-  .skills {
-    padding: 3rem 1rem;
+  .container {
+    padding: clamp(2rem, 4vw, 3.5rem) clamp(1rem, 2vw, 1.5rem) clamp(2rem, 4vw, 3rem);
+  }
+  
+  .about {
+    padding: 0;
   }
 
-  .about h2,
-  .skills h2 {
-    font-size: 2rem;
+  .about h2 {
+    font-size: var(--font-size-xl);
+    margin-bottom: clamp(0.875rem, 1.75vw, 1.25rem);
   }
 
   .about p {
-    font-size: 1rem;
-  }
-
-  .skills li {
-    font-size: 0.875rem;
-    padding: 0.5rem;
+    font-size: var(--font-size-sm);
+    line-height: 1.7;
   }
 }
 
-@media (max-width: 480px) {
-  .about,
-  .skills {
-    padding: 2rem 1rem;
+/* Large phones */
+@media (max-width: 425px) {
+  .container {
+    padding: clamp(2.5rem, 5vw, 4rem) var(--spacing-sm) clamp(1.5rem, 3vw, 2.5rem);
+  }
+  
+  .about {
+    padding: 0;
+  }
+}
+
+/* Standard phones */
+@media (max-width: 375px) {
+  .container {
+    padding: clamp(2rem, 4vw, 3rem) var(--spacing-xs) clamp(1.25rem, 2.5vw, 2rem);
+  }
+  
+  .about {
+    padding: 0;
   }
 
-  .about h2,
-  .skills h2 {
-    font-size: 1.5rem;
+  .about h2 {
+    font-size: var(--font-size-lg);
+    margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
   }
 
   .about p {
-    font-size: 0.875rem;
+    font-size: var(--font-size-xs);
+    line-height: 1.6;
   }
+}
 
-  .skills li {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.5rem;
+/* Extra small phones */
+@media (max-width: 320px) {
+  .container {
+    padding: clamp(1.5rem, 3vw, 2.5rem) var(--spacing-xs) clamp(1rem, 2vw, 1.5rem);
+  }
+  
+  .about {
+    padding: 0;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY - REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .about {
+    transition: none;
+    opacity: 1;
   }
 }
