@@ -1,0 +1,553 @@
+/* ============================================
+   ENGAGING LOADING SCREEN
+   ============================================ */
+
+.loadingScreen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: linear-gradient(135deg, 
+    var(--bg-primary) 0%, 
+    var(--bg-secondary) 50%, 
+    var(--bg-primary) 100%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.loadingScreen.exiting {
+  animation: fadeOut 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+}
+
+.loadingContent {
+  text-align: center;
+  z-index: 2;
+  position: relative;
+  padding: 2rem;
+  animation: slideUp 0.8s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   ICON ANIMATIONS
+   ============================================ */
+
+.iconContainer {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 2rem;
+}
+
+.iconCircle {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 
+    0 0 40px rgba(75, 108, 183, 0.4),
+    0 0 80px rgba(75, 108, 183, 0.2);
+  animation: pulse 2s ease-in-out infinite, rotate 20s linear infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.iconCircle::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  animation: shine 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 
+      0 0 40px rgba(75, 108, 183, 0.4),
+      0 0 80px rgba(75, 108, 183, 0.2);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 
+      0 0 60px rgba(75, 108, 183, 0.6),
+      0 0 120px rgba(75, 108, 183, 0.3);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shine {
+  from {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  to {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+.mainIcon {
+  color: white;
+  z-index: 1;
+  animation: iconBounce 2s ease-in-out infinite;
+}
+
+@keyframes iconBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.floatingIcon,
+.floatingIcon2,
+.floatingIcon3 {
+  position: absolute;
+  color: var(--color-primary);
+  opacity: 0.6;
+}
+
+.floatingIcon {
+  top: 10px;
+  right: 10px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.floatingIcon2 {
+  bottom: 15px;
+  left: 5px;
+  animation: float 3s ease-in-out infinite 1s;
+}
+
+.floatingIcon3 {
+  top: 50%;
+  left: -10px;
+  animation: float 3s ease-in-out infinite 2s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-20px) rotate(10deg);
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   PORTFOLIO TITLE ANIMATION
+   ============================================ */
+
+.portfolioTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  background: linear-gradient(135deg, 
+    var(--color-primary) 0%,
+    var(--color-accent) 50%,
+    #8b5cf6 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: flex;
+  justify-content: center;
+  gap: 0.1em;
+}
+
+.titleChar {
+  display: inline-block;
+  animation: charPop 0.6s ease-out backwards;
+  animation-delay: calc(var(--char-index, 0) * 0.05s);
+}
+
+.titleChar:nth-child(1) { --char-index: 0; }
+.titleChar:nth-child(2) { --char-index: 1; }
+.titleChar:nth-child(3) { --char-index: 2; }
+.titleChar:nth-child(4) { --char-index: 3; }
+.titleChar:nth-child(6) { --char-index: 4; }
+.titleChar:nth-child(7) { --char-index: 5; }
+.titleChar:nth-child(8) { --char-index: 6; }
+.titleChar:nth-child(9) { --char-index: 7; }
+.titleChar:nth-child(10) { --char-index: 8; }
+.titleChar:nth-child(11) { --char-index: 9; }
+.titleChar:nth-child(12) { --char-index: 10; }
+
+.titleSpace {
+  width: 0.3em;
+}
+
+@keyframes charPop {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  margin: 0 0 2.5rem;
+  font-weight: 500;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.5s forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   PROGRESS BAR
+   ============================================ */
+
+.progressContainer {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.7s forwards;
+}
+
+.progressBar {
+  width: 100%;
+  height: 8px;
+  background: var(--bg-tertiary);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, 
+    var(--color-primary) 0%,
+    var(--color-accent) 50%,
+    #8b5cf6 100%
+  );
+  border-radius: 999px;
+  transition: width 0.3s ease-out;
+  position: relative;
+  box-shadow: 0 0 20px rgba(75, 108, 183, 0.5);
+}
+
+.progressGlow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent,
+    rgba(255, 255, 255, 0.4)
+  );
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.progressText {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.progressPercent {
+  color: var(--color-primary);
+  font-weight: 600;
+  min-width: 45px;
+  text-align: right;
+}
+
+/* ============================================
+   LOADING DOTS
+   ============================================ */
+
+.loadingDots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.9s forwards;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  animation: dotBounce 1.4s ease-in-out infinite;
+}
+
+.dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes dotBounce {
+  0%, 80%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   BACKGROUND ELEMENTS
+   ============================================ */
+
+.bgElements {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.bgCircle1,
+.bgCircle2,
+.bgCircle3 {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+  filter: blur(60px);
+}
+
+.bgCircle1 {
+  width: 400px;
+  height: 400px;
+  background: var(--color-primary);
+  top: -100px;
+  right: -100px;
+  animation: floatSlow 20s ease-in-out infinite;
+}
+
+.bgCircle2 {
+  width: 300px;
+  height: 300px;
+  background: var(--color-accent);
+  bottom: -50px;
+  left: -50px;
+  animation: floatSlow 15s ease-in-out infinite 5s;
+}
+
+.bgCircle3 {
+  width: 250px;
+  height: 250px;
+  background: #8b5cf6;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: floatSlow 25s ease-in-out infinite 10s;
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(50px, 50px) scale(1.1);
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  .loadingContent {
+    padding: 1.5rem;
+  }
+
+  .iconContainer {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1.5rem;
+  }
+
+  .mainIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .portfolioTitle {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .progressContainer {
+    max-width: 300px;
+  }
+
+  .progressText {
+    font-size: 0.85rem;
+  }
+
+  .bgCircle1,
+  .bgCircle2,
+  .bgCircle3 {
+    filter: blur(40px);
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolioTitle {
+    font-size: 1.75rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .iconContainer {
+    width: 80px;
+    height: 80px;
+  }
+
+  .mainIcon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .progressContainer {
+    max-width: 260px;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY - REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .loadingScreen,
+  .loadingContent,
+  .iconCircle,
+  .mainIcon,
+  .floatingIcon,
+  .floatingIcon2,
+  .floatingIcon3,
+  .titleChar,
+  .subtitle,
+  .progressContainer,
+  .loadingDots,
+  .dot,
+  .bgCircle1,
+  .bgCircle2,
+  .bgCircle3,
+  .progressGlow {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .iconCircle::before {
+    display: none;
+  }
+
+  .titleChar {
+    opacity: 1;
+    transform: none;
+  }
+
+  .subtitle,
+  .progressContainer,
+  .loadingDots {
+    opacity: 1;
+  }
+
+  .loadingScreen.exiting {
+    animation: simpleFadeOut 0.3s ease-out forwards;
+  }
+
+  @keyframes simpleFadeOut {
+    to {
+      opacity: 0;
+    }
+  }
+}

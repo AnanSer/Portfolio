@@ -12,6 +12,7 @@ import ContactPage from "./Components/Contact-form/ContactForm";
 import Footer from "./Components/Footer/Footer";
 import CommandPalette from "./Components/CommandPalette/CommandPalette";
 import CommandPaletteButton from "./Components/CommandPalette/CommandPaletteButton";
+import LoadingScreen from "./Components/UI/LoadingScreen";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import PremiumCursor from "./Components/UI/PremiumCursor";
 import ScrollProgress from "./Components/UI/ScrollProgress";
@@ -100,6 +101,7 @@ const projectsData = [
 
 function App() {
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Global keyboard shortcut: Ctrl+K or ⌘+K
   useEffect(() => {
@@ -114,9 +116,14 @@ function App() {
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+  };
+
   return (
     <ThemeProvider>
-      <div>
+      {isLoading && <LoadingScreen onLoadingComplete={handleLoadingComplete} />}
+      <div style={{ opacity: isLoading ? 0 : 1, transition: 'opacity 0.3s ease-in' }}>
         <PremiumCursor />
         <ScrollProgress />
         <ScrollToTop />
