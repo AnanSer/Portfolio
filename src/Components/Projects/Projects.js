@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Github, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
-import styles from "./projects.module.css";
+import styles from "./Projects.module.css";
 import useCardTilt from "../../hooks/useCardTilt";
 import useRippleEffect from "../../hooks/useRippleEffect";
 import ProjectFocusPanel from "./ProjectFocusPanel";
