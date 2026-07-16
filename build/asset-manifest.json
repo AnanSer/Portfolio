@@ -1,8 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.2a10e6b5.css",
-    "main.js": "/static/js/main.58f1a163.js",
+    "main.css": "/static/css/main.e7614902.css",
+    "main.js": "/static/js/main.5ade885c.js",
+    "static/media/mypic.jpeg": "/static/media/mypic.e58a70f0fdb22de9293f.jpeg",
     "static/media/fa-solid-900.ttf": "/static/media/fa-solid-900.2582b0e4bcf85eceead0.ttf",
+    "static/media/Anan_Serbesa_CV.pdf": "/static/media/Anan_Serbesa_CV.14fb9426bf78792b43cb.pdf",
     "static/media/Screenshot 2024-11-24 174536.png": "/static/media/Screenshot 2024-11-24 174536.c429c1c4bf91f71098f2.png",
     "static/media/food order.png": "/static/media/food order.0817a244965e94dc9900.png",
     "static/media/fa-brands-400.ttf": "/static/media/fa-brands-400.1815e00441357e01619e.ttf",
@@ -13,17 +15,16 @@
     "static/media/creative-design.png": "/static/media/creative-design.973be7ab0a1b62915683.png",
     "static/media/food1.png": "/static/media/food1.afd2834606fcb4ce2a5f.png",
     "static/media/budget tracker.png": "/static/media/budget tracker.0beaeb5d41ae59bc4c84.png",
-    "static/media/me.jpg": "/static/media/me.1ddd40541c08c6b3a915.jpg",
     "static/media/fa-regular-400.woff2": "/static/media/fa-regular-400.89999bdf5d835c012025.woff2",
     "static/media/adduser.png": "/static/media/adduser.404aef324bf71a3574de.png",
     "static/media/fa-v4compatibility.ttf": "/static/media/fa-v4compatibility.da94ef451f4969af06e6.ttf",
     "static/media/fa-v4compatibility.woff2": "/static/media/fa-v4compatibility.ea8f94e1d22e0d35ccd4.woff2",
     "index.html": "/index.html",
-    "main.2a10e6b5.css.map": "/static/css/main.2a10e6b5.css.map",
-    "main.58f1a163.js.map": "/static/js/main.58f1a163.js.map"
+    "main.e7614902.css.map": "/static/css/main.e7614902.css.map",
+    "main.5ade885c.js.map": "/static/js/main.5ade885c.js.map"
   },
   "entrypoints": [
-    "static/css/main.2a10e6b5.css",
-    "static/js/main.58f1a163.js"
+    "static/css/main.e7614902.css",
+    "static/js/main.5ade885c.js"
   ]
 }
