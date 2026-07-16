@@ -3,10 +3,12 @@
    ============================================ */
 
 .footer {
-  background-color: var(--color-secondary);
-  color: var(--color-text-light);
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
   padding: var(--spacing-3xl) 0 var(--spacing-md);
   width: 100%;
+  border-top: 1px solid var(--border-primary);
+  transition: background-color var(--transition-base), color var(--transition-base);
 }
 
 .footerContent {
@@ -53,8 +55,9 @@
   font-size: var(--font-size-base);
   margin-bottom: var(--spacing-xs);
   line-height: 1.6;
-  color: var(--color-text-light);
-  opacity: 0.9;
+  color: var(--text-secondary);
+  opacity: 0.95;
+  transition: color var(--transition-base);
 }
 
 .footerLinks {
@@ -64,13 +67,13 @@
 }
 
 .footerLink {
-  color: var(--color-text-light);
+  color: var(--text-secondary);
   text-decoration: none;
   font-size: var(--font-size-sm);
   transition: color var(--transition-base), transform var(--transition-base);
   display: inline-block;
   margin-bottom: var(--spacing-xs);
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 .footerLink:hover {
@@ -86,16 +89,17 @@
 }
 
 .socialIcons a {
-  color: var(--color-text-light);
-  transition: color var(--transition-base), transform var(--transition-base);
+  color: var(--text-primary);
+  transition: color var(--transition-base), transform var(--transition-base), background-color var(--transition-base);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 40px;
   height: 40px;
   border-radius: var(--radius-md);
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--bg-tertiary);
   opacity: 0.9;
+  border: 1px solid var(--border-primary);
 }
 
 .socialIcons a:hover {
@@ -117,7 +121,7 @@
 }
 
 .socialLink {
-  color: var(--color-text-light);
+  color: var(--text-primary);
   transition: color var(--transition-base), transform var(--transition-base);
   display: inline-flex;
   align-items: center;
@@ -133,10 +137,11 @@
   text-align: center;
   margin-top: var(--spacing-xl);
   padding-top: var(--spacing-md);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--border-primary);
   font-size: var(--font-size-sm);
-  color: var(--color-text-light);
-  opacity: 0.8;
+  color: var(--text-secondary);
+  opacity: 0.85;
+  transition: border-color var(--transition-base), color var(--transition-base);
 }
 
 .footerBottom p {

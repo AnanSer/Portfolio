@@ -13,7 +13,6 @@ import {
   MessageCircle
 } from "lucide-react";
 import styles from "./contactForm.module.css";
-import emailjs from "emailjs-com";
 
 // Terminal commands with typing animation
 const terminalCommands = [
@@ -131,43 +130,59 @@ const ContactPage = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Prepare template parameters
-    const templateParams = {
-      from_name: formState.name,
-      from_email: formState.email,
-      message: formState.message,
-      to_name: "Anan Serbesa",
-    };
-    
-    emailjs
-      .send(
-        "service_c4f3c67",
-        "template_wftg2cj",
-        templateParams,
-        "s1aoHosd6fDt2Wldn"
-      )
-      .then(
-        (result) => {
-          console.log("Form submitted:", result.text);
-          setShowSuccess(true);
-          setFormState({ name: "", email: "", message: "" });
-          setIsSubmitting(false);
-          
-          // Hide success message after 5 seconds
-          setTimeout(() => {
-            setShowSuccess(false);
-          }, 5000);
+    try {
+      const response = await fetch("https://formspree.io/f/mvzeznlk", {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
         },
-        (error) => {
-          console.log("Failed to send message:", error.text);
-          alert("Failed to send message. Please try again or contact me directly at ananserbesa@gmail.com");
-          setIsSubmitting(false);
-        }
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          message: formState.message,
+          _replyto: formState.email,
+          _subject: `Portfolio Message from ${formState.name}`,
+        }),
+      });
+
+      if (response.ok) {
+        console.log("Form submitted successfully via Formspree");
+        setShowSuccess(true);
+        setFormState({ name: "", email: "", message: "" });
+        
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          setShowSuccess(false);
+        }, 5000);
+      } else {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to send message");
+      }
+    } catch (error) {
+      console.error("Failed to send message:", error);
+      
+      // Fallback to mailto if Formspree fails
+      const subject = encodeURIComponent(`Portfolio Message from ${formState.name}`);
+      const body = encodeURIComponent(
+        `Name: ${formState.name}\nEmail: ${formState.email}\n\nMessage:\n${formState.message}`
       );
+      window.location.href = `mailto:ananserbesa@gmail.com?subject=${subject}&body=${body}`;
+      
+      // Show success message anyway since mailto opened
+      setShowSuccess(true);
+      setFormState({ name: "", email: "", message: "" });
+      
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const copyEmail = () => {

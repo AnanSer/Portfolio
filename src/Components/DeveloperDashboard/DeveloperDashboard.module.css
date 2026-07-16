@@ -1131,3 +1131,226 @@
     transition: none;
   }
 }
+
+
+/* ============================================
+   LIGHT MODE THEME
+   ============================================ */
+
+[data-theme='light'] .collapsedHeader {
+  background: linear-gradient(135deg, rgba(248, 250, 252, 0.98) 0%, rgba(241, 245, 249, 0.99) 100%);
+  border: 1px solid rgba(75, 108, 183, 0.2);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+[data-theme='light'] .collapsedHeader::before {
+  background: linear-gradient(
+    135deg,
+    rgba(75, 108, 183, 0.03) 0%,
+    transparent 50%,
+    rgba(139, 92, 246, 0.03) 100%
+  );
+}
+
+[data-theme='light'] .collapsedHeader:hover {
+  border-color: rgba(75, 108, 183, 0.4);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    0 0 40px rgba(75, 108, 183, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+[data-theme='light'] .headerTitle {
+  color: #1e293b;
+}
+
+[data-theme='light'] .headerSubtitle {
+  color: #64748b;
+}
+
+[data-theme='light'] .workspaceContainer {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.99) 100%);
+  border: 1px solid rgba(75, 108, 183, 0.2);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+[data-theme='light'] .explorer {
+  background: rgba(248, 250, 252, 0.95);
+  border-right: 1px solid rgba(75, 108, 183, 0.15);
+}
+
+[data-theme='light'] .explorerHeader {
+  background: rgba(241, 245, 249, 0.9);
+  border-bottom: 1px solid rgba(75, 108, 183, 0.15);
+}
+
+[data-theme='light'] .explorerTitle {
+  color: #475569;
+}
+
+[data-theme='light'] .rootFolder {
+  color: #1e293b;
+}
+
+[data-theme='light'] .fileItem {
+  color: #475569;
+}
+
+[data-theme='light'] .fileItem:hover {
+  background: rgba(96, 165, 250, 0.08);
+  color: #1e293b;
+  border-left-color: rgba(75, 108, 183, 0.4);
+}
+
+[data-theme='light'] .fileItem.selected {
+  background: rgba(96, 165, 250, 0.12);
+  color: #1e293b;
+  border-left-color: #4b6cb7;
+  font-weight: 600;
+}
+
+[data-theme='light'] .fileItem.folder {
+  color: #334155;
+}
+
+[data-theme='light'] .fileItem .expandIcon {
+  color: #64748b;
+}
+
+[data-theme='light'] .contentViewer {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme='light'] .contentHeader {
+  background: rgba(248, 250, 252, 0.95);
+  border-bottom: 1px solid rgba(75, 108, 183, 0.15);
+}
+
+[data-theme='light'] .contentTab {
+  background: rgba(241, 245, 249, 0.95);
+  border-right: 1px solid rgba(75, 108, 183, 0.15);
+  color: #1e293b;
+}
+
+[data-theme='light'] .contentBody {
+  color: #334155;
+}
+
+[data-theme='light'] .readmeContent h3 {
+  color: #1e293b;
+}
+
+[data-theme='light'] .readmeContent h4 {
+  color: #4b6cb7;
+}
+
+[data-theme='light'] .readmeContent p,
+[data-theme='light'] .readmeContent li {
+  color: #475569;
+}
+
+[data-theme='light'] .statusBadge {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+[data-theme='light'] .jsonContent {
+  color: #2563eb;
+  background: rgba(241, 245, 249, 0.8);
+  border: 1px solid rgba(75, 108, 183, 0.15);
+}
+
+[data-theme='light'] .configContent,
+[data-theme='light'] .tsContent,
+[data-theme='light'] .envContent {
+  color: #475569;
+  background: rgba(241, 245, 249, 0.8);
+  border: 1px solid rgba(75, 108, 183, 0.15);
+}
+
+[data-theme='light'] .projectContent h4 {
+  color: #1e293b;
+}
+
+[data-theme='light'] .projectContent p,
+[data-theme='light'] .projectContent li {
+  color: #475569;
+}
+
+[data-theme='light'] .projectContent strong {
+  color: #4b6cb7;
+}
+
+[data-theme='light'] .techTags span {
+  background: rgba(96, 165, 250, 0.1);
+  border: 1px solid rgba(96, 165, 250, 0.25);
+  color: #2563eb;
+}
+
+[data-theme='light'] .linkBtn {
+  background: rgba(96, 165, 250, 0.08);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  color: #2563eb;
+}
+
+[data-theme='light'] .linkBtn:hover {
+  background: rgba(96, 165, 250, 0.15);
+  border-color: #4b6cb7;
+}
+
+[data-theme='light'] .learningContent h3 {
+  color: #1e293b;
+}
+
+[data-theme='light'] .learningContent > p {
+  color: #64748b;
+}
+
+[data-theme='light'] .learningItem {
+  background: rgba(241, 245, 249, 0.6);
+  border: 1px solid rgba(75, 108, 183, 0.15);
+}
+
+[data-theme='light'] .learningItem h4 {
+  color: #4b6cb7;
+}
+
+[data-theme='light'] .learningItem p {
+  color: #475569;
+}
+
+[data-theme='light'] .progressBar {
+  background: rgba(241, 245, 249, 0.9);
+  border: 1px solid rgba(75, 108, 183, 0.2);
+}
+
+[data-theme='light'] .aiContent h3 {
+  color: #1e293b;
+}
+
+[data-theme='light'] .aiContent h4 {
+  color: #4b6cb7;
+}
+
+[data-theme='light'] .aiContent p,
+[data-theme='light'] .aiContent li {
+  color: #475569;
+}
+
+[data-theme='light'] .aiExample {
+  background: rgba(96, 165, 250, 0.08);
+  border: 1px solid rgba(96, 165, 250, 0.2);
+}
+
+[data-theme='light'] .aiExample strong {
+  color: #2563eb;
+}
+
+[data-theme='light'] .imagePlaceholder {
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.08) 0%, rgba(168, 85, 247, 0.08) 100%);
+  border: 1px solid rgba(75, 108, 183, 0.15);
+}

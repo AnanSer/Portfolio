@@ -28,8 +28,8 @@ import creative_design from "./assets/images/creative-design.png";
 import adduser from "./assets/images/adduser.png";
 import taskManagement from "./assets/images/taskManagemnt.png";
 import Food from "./assets/images/food1.png";
-import TrafficFine from "./assets/images/Screenshot 2024-11-24 174536.png";
-import LetterManagement from "./assets/images/form-img.png";
+import TrafficFine from "./assets/images/tms.png";
+import LetterManagement from "./assets/images/lms.png";
 
 // Projects data (shared with Projects component and Command Palette)
 const projectsData = [

@@ -12,8 +12,8 @@ import creative_design from "../../assets/images/creative-design.png";
 import adduser from "../../assets/images/adduser.png";
 import taskManagement from "../../assets/images/taskManagemnt.png";
 import Food from "../../assets/images/food1.png";
-import TrafficFine from "../../assets/images/Screenshot 2024-11-24 174536.png"; // Traffic Fine Management image
-import LetterManagement from "../../assets/images/form-img.png"; // Letter Management image
+import TrafficFine from "../../assets/images/tms.png"; // Traffic Fine Management image
+import LetterManagement from "../../assets/images/lms.png"; // Letter Management image
 
 const projects = [
   {
