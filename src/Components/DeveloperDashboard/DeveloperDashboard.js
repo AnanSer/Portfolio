@@ -53,6 +53,8 @@ const DeveloperDashboard = () => {
       type: 'folder',
       icon: '📁',
       children: [
+        { name: 'Simple ERP System Blueprint', type: 'file', icon: '🏗️' },
+        { name: 'Business Management System', type: 'file', icon: '🏢' },
         { name: 'Traffic Fine Management', type: 'file', icon: '🚦' },
         { name: 'Letter Management System', type: 'file', icon: '📨' },
         { name: 'Food Order App', type: 'file', icon: '🍔' },
@@ -124,6 +126,96 @@ const DeveloperDashboard = () => {
           <div className={styles.jsonLine} style={{ animationDelay: '1.15s' }}>{'  ]'}</div>
           <div className={styles.jsonLine} style={{ animationDelay: '1.2s' }}>{'}'}</div>
         </pre>
+      )
+    },
+    'Simple ERP System Blueprint': {
+      title: 'Simple ERP System Blueprint',
+      content: (
+        <div className={styles.projectContent}>
+          <div className={styles.projectImage}>
+            <div className={styles.imagePlaceholder}>🏗️</div>
+          </div>
+          <div className={styles.projectInfo}>
+            <h4>🏗️ Simple ERP System Blueprint</h4>
+            <div className={styles.projectBadges}>
+              <span className={styles.badge}>✅ Responsive</span>
+              <span className={styles.badge}>🚀 Live</span>
+              <span className={styles.badge}>🎨 UI/UX Prototype</span>
+              <span className={styles.badge}>🏢 Enterprise</span>
+            </div>
+            <p><strong>Overview:</strong> A comprehensive UI/UX prototype demonstrating how an Enterprise Resource Planning (ERP) system can centralize project management, groundwater monitoring, workflows, employee management, and reporting into one unified platform.</p>
+            <p><strong>Tech Stack:</strong></p>
+            <div className={styles.techTags}>
+              <span>React</span>
+              <span>Next.js</span>
+              <span>Tailwind CSS</span>
+              <span>TypeScript</span>
+              <span>Shadcn UI</span>
+            </div>
+            <p><strong>Key Features:</strong></p>
+            <ul>
+              <li>Modern enterprise dashboard with overview page</li>
+              <li>Comprehensive project management module</li>
+              <li>Groundwater monitoring system</li>
+              <li>Workflow management interface</li>
+              <li>Employee management system</li>
+              <li>Reporting and analytics module</li>
+              <li>Technical system blueprint documentation</li>
+              <li>Clean enterprise-grade UI/UX design</li>
+            </ul>
+            <div className={styles.projectLinks}>
+              <a href="https://simple-erp-gamma.vercel.app/" target="_blank" rel="noopener noreferrer" className={styles.linkBtn}>View Live Demo</a>
+              <a href="#projects" className={styles.linkBtn}>More Details</a>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    'Business Management System': {
+      title: 'Business Management System',
+      content: (
+        <div className={styles.projectContent}>
+          <div className={styles.projectImage}>
+            <div className={styles.imagePlaceholder}>🏢</div>
+          </div>
+          <div className={styles.projectInfo}>
+            <h4>🏢 Business Management & Product Showcase System</h4>
+            <div className={styles.projectBadges}>
+              <span className={styles.badge}>✅ Responsive</span>
+              <span className={styles.badge}>🚀 Live</span>
+              <span className={styles.badge}>🌐 Multilingual</span>
+              <span className={styles.badge}>🔐 Admin Panel</span>
+            </div>
+            <p><strong>Overview:</strong> A comprehensive full-stack platform with dual interfaces: a public multilingual product showcase and a secure admin dashboard for complete business management.</p>
+            <p><strong>Tech Stack:</strong></p>
+            <div className={styles.techTags}>
+              <span>Next.js</span>
+              <span>Node.js</span>
+              <span>Express.js</span>
+              <span>Prisma</span>
+              <span>PostgreSQL</span>
+              <span>Tailwind CSS</span>
+            </div>
+            <p><strong>Key Features:</strong></p>
+            <ul>
+              <li>Multilingual support (English, Amharic, Afaan Oromoo)</li>
+              <li>Product, category, and inventory management</li>
+              <li>Customer and inquiry management workflows</li>
+              <li>Job posting and management system</li>
+              <li>Role-based admin access control</li>
+              <li>Responsive desktop and mobile interfaces</li>
+            </ul>
+            <div className={styles.projectLinks}>
+              <a href="https://business-management-product-showcas.vercel.app/" target="_blank" rel="noopener noreferrer" className={styles.linkBtn}>View Live Demo</a>
+              <a href="#projects" className={styles.linkBtn}>More Details</a>
+            </div>
+            <div className={styles.demoCredentials}>
+              <p><strong>🔑 Admin Demo:</strong></p>
+              <p>Email: alan@gmail.com</p>
+              <p>Password: test123</p>
+            </div>
+          </div>
+        </div>
       )
     },
     'Traffic Fine Management': {
@@ -579,9 +671,20 @@ WORK_HOURS=9:00 AM - 6:00 PM EAT`}
           <span className={styles.folderIcon}>📂</span>
           <div className={styles.headerText}>
             <h2 className={styles.headerTitle}>Developer Workspace</h2>
-            <p className={styles.headerSubtitle}>Explore how I work</p>
+            <p className={styles.headerSubtitle}>Click to explore my code</p>
           </div>
         </div>
+        
+        {/* Centered Click Icon */}
+        <div className={styles.clickIndicator}>
+          <span className={styles.clickIcon}>
+            {isExpanded ? '👆' : '👇'}
+          </span>
+          <span className={styles.clickText}>
+            {isExpanded ? 'Click to collapse' : 'Click to expand'}
+          </span>
+        </div>
+
         <div className={styles.headerRight}>
           <span className={styles.onlineStatus}>
             <span className={styles.onlineDot}></span>

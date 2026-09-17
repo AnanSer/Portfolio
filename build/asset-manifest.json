@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.de4f3967.css",
-    "main.js": "/static/js/main.fa691efa.js",
+    "main.css": "/static/css/main.3c18a4c3.css",
+    "main.js": "/static/js/main.31c2f070.js",
     "static/media/mypic.jpeg": "/static/media/mypic.e58a70f0fdb22de9293f.jpeg",
     "static/media/fa-solid-900.ttf": "/static/media/fa-solid-900.2582b0e4bcf85eceead0.ttf",
     "static/media/Anan_Serbesa_CV.pdf": "/static/media/Anan_Serbesa_CV.14fb9426bf78792b43cb.pdf",
@@ -19,12 +19,10 @@
     "static/media/adduser.png": "/static/media/adduser.404aef324bf71a3574de.png",
     "static/media/fa-v4compatibility.ttf": "/static/media/fa-v4compatibility.da94ef451f4969af06e6.ttf",
     "static/media/fa-v4compatibility.woff2": "/static/media/fa-v4compatibility.ea8f94e1d22e0d35ccd4.woff2",
-    "index.html": "/index.html",
-    "main.de4f3967.css.map": "/static/css/main.de4f3967.css.map",
-    "main.fa691efa.js.map": "/static/js/main.fa691efa.js.map"
+    "index.html": "/index.html"
   },
   "entrypoints": [
-    "static/css/main.de4f3967.css",
-    "static/js/main.fa691efa.js"
+    "static/css/main.3c18a4c3.css",
+    "static/js/main.31c2f070.js"
   ]
 }

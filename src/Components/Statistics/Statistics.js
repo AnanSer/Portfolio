@@ -3,7 +3,7 @@ import styles from './Statistics.module.css';
 
 const Statistics = () => {
   const [stats, setStats] = useState([
-    { value: 0, target: 4, suffix: '+', label: 'Years Experience' },
+    { value: 0, target: 3, suffix: '+', label: 'Years Experience' },
     { value: 0, target: 10, suffix: '+', label: 'Projects Shipped' },
     { value: 0, target: 3, suffix: '+', label: 'Companies Served' },
   ]);

@@ -59,11 +59,6 @@ const HomePage = () => {
               scrollY > 50 ? style.scrolled : ""
             }`}
           >
-            <div className={style["hero-badge"]}>
-              <span className={style["badge-dot"]}></span>
-              Available for Work
-            </div>
-
             <h1 className={`${style["hero-title"]} ${style["animate-slide-up"]}`}>
               Anan Serbesa
             </h1>

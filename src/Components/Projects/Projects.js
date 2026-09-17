@@ -14,8 +14,58 @@ import taskManagement from "../../assets/images/taskManagemnt.png";
 import Food from "../../assets/images/food1.png";
 import TrafficFine from "../../assets/images/tms.png"; // Traffic Fine Management image
 import LetterManagement from "../../assets/images/lms.png"; // Letter Management image
+import BusinessManagement from "../../assets/images/bussiness.png"; // Business Management image
+import ERPSystem from "../../assets/images/simple-erp.png"; // ERP System image
 
 const projects = [
+  {
+    title: "Simple ERP System Blueprint",
+    description:
+      "A comprehensive UI/UX prototype demonstrating how an Enterprise Resource Planning (ERP) system can centralize project management, groundwater monitoring, workflows, employee management, and reporting into one unified platform with a clean, modern enterprise interface.",
+    image: ERPSystem,
+    github: "https://github.com/AnanSer/simple-erp",
+    liveDemo: "https://simple-erp-gamma.vercel.app/",
+    caseStudy: null,
+    status: "Completed",
+    technologies: ["React", "Next.js", "Tailwind CSS", "TypeScript", "Shadcn UI"],
+    caseStudyData: {
+      problem: "Enterprises need unified systems to manage projects, resources, workflows, and reporting in one centralized platform.",
+      solution: ["Dashboard Overview", "Project Management", "Groundwater Monitoring", "Workflow Management", "Employee System", "Reporting Module", "System Blueprint", "Enterprise UI/UX"],
+      role: "UI/UX Designer & Frontend Developer",
+      duration: "2 Months",
+      highlights: [
+        "Modern enterprise dashboard design",
+        "Centralized resource planning interface",
+        "Clean and intuitive UI/UX prototype",
+        "Comprehensive module architecture",
+        "Responsive enterprise-grade interface"
+      ]
+    }
+  },
+  {
+    title: "Business Management & Product Showcase System",
+    description:
+      "A comprehensive full-stack platform featuring dual interfaces: a public multilingual product showcase supporting English, Amharic, and Afaan Oromoo, and a secure admin dashboard for managing products, categories, inventory, customers, inquiries, and job postings with role-based access control.",
+    image: BusinessManagement,
+    github: "https://github.com/AnanSer/business-management-product-showcase",
+    liveDemo: "https://business-management-product-showcas.vercel.app/",
+    caseStudy: null,
+    status: "Completed",
+    technologies: ["Next.js", "Node.js", "Express.js", "Prisma", "PostgreSQL", "Tailwind CSS"],
+    caseStudyData: {
+      problem: "Businesses needed a unified system to manage operations internally while showcasing products to a multilingual audience.",
+      solution: ["Product Management", "Multilingual Support", "Admin Dashboard", "Inventory Tracking", "Customer Management", "Inquiry System", "Job Management", "Role-Based Access"],
+      role: "Full-Stack Developer",
+      duration: "4 Months",
+      highlights: [
+        "Multilingual support (English, Amharic, Afaan Oromoo)",
+        "Dual interface (public showcase + admin dashboard)",
+        "Complete business workflow management",
+        "Role-based admin access control",
+        "Admin Demo: alan@gmail.com / test123"
+      ]
+    }
+  },
   {
     title: "Digital Traffic Fine Management System (DTFMS)",
     description:
